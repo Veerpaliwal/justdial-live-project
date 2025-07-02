@@ -300,12 +300,116 @@
                     letter-spacing: 1px;
                 }
             </style>
+              <style>
+                    .business-card {
+                    min-width: 300px;
+                    max-width: 320px;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    background: #fff;
+                    flex-shrink: 0;
+                    }
+                    .scrolling-wrapper {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 1rem;
+                    padding-bottom: 1rem;
+                    }
+                    .scrolling-wrapper::-webkit-scrollbar {
+                    display: none;
+                    }
+                    .card-img-top {
+                    height: 180px;
+                    object-fit: cover;
+                    }
+                    .reviewer-img {
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    }
+                    .star-rating {
+                    color: #ffa500;
+                    font-size: 1rem;
+                    margin: 0.5rem 0;
+                    }
+                </style>
+                  <style>
+                        /* Scroll section styling */
+                        .scrolling-wrapper, .scrolling-articles {
+                        display: flex;
+                        overflow-x: auto;
+                        gap: 1rem;
+                        padding-bottom: 1rem;
+                        scroll-behavior: smooth;
+                        }
 
+                        .scrolling-wrapper::-webkit-scrollbar,
+                        .scrolling-articles::-webkit-scrollbar {
+                        display: none;
+                        }
+
+                        .business-card, .article-card {
+                        flex: 0 0 auto;
+                        width: 300px;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        border: 1px solid #ddd;
+                        background: #fff;
+                        }
+
+                        .card-img-top,
+                        .article-card img {
+                        width: 100%;
+                        height: 180px;
+                        object-fit: cover;
+                        }
+
+                        .reviewer-img {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        }
+
+                        .star-rating {
+                        color: #ffa500;
+                        font-size: 1rem;
+                        margin: 0.5rem 0;
+                        }
+
+                        .article-body {
+                        padding: 0.75rem;
+                        }
+
+                        .article-title {
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 0.5rem;
+                        }
+
+                        .article-link {
+                        color: #007bff;
+                        text-decoration: none;
+                        font-weight: 500;
+                        }
+
+                        .article-link:hover {
+                        text-decoration: underline;
+                        }
+
+                        .d-grid {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 1rem;
+                        }
+                    </style>
             
-   </head>
-    <body>
-       <div class="container-fluid p-4  v_tbdr ">
-            <header class="v_tbdr">
+      </head>
+         <body>
+           <div class="container-fluid p-4  v_tbdr ">
+              <header class="v_tbdr">
                 <div class="row m-0 h-100">
                     <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
                         <div class="logo-wrapper">
@@ -723,67 +827,141 @@
                             </div>
                             </div>
 
-                            <!-- Card 5 -->
-                            <div class="scroll-card" style="flex: 0 0 auto; width: 250px; scroll-snap-align: start;">
-                            <img src="./img/shot-of-a-young-woman-checking-her-results-in-the-dentists-office (1).png" alt="Dentists">
-                            <div class="info">
-                                <h6>Dentists</h6>
-                                <button type="button" class="btn btn-primary">Explor</button>
-                            </div>
-                            </div>
+                            
 
                     </div>
                     </div>
 
                     <h2>Recent Activity</h2>
+                    
+                    <div class="container my-5">
+                        <h4 class="mb-4">Popular Searches</h4>
+                        <div class="scrolling-wrapper">
 
-                        <div class="container my-5">
-                    <div class="row g-4">
+                    <!-- Card 1 -->
+                    <div class="business-card">
+                        <img src="img/vinyal-500x500.png" class="card-img-top" alt="Business 1" />
+                        <div class="p-3">
+                        <h6 class="mb-1">National Wallpaper...</h6>
+                        <p class="text-muted small mb-2">Ghatkopar West - Mumbai</p>
+                        <a href="#" class="btn btn-sm btn-success mb-3">WhatsApp</a>
 
-                        <!-- Card 1 -->
-                        <div class="col-md-4">
-                        <div class="card h-100 shadow-sm border rounded-4">
-                            <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h5 class="card-title mb-0">National Wallpaper...</h5>
-                                <img src="img/vinyal-500x500.png" width="25" alt="WhatsApp" />
-                            </div>
-                            <p class="text-muted small">Ghatkopar West - Mumbai</p>
-                            </div>
-                            <img src=".img/vinyal-500x500.png/" class="card-img-top" alt="Wallpaper Image" style="height: 160px; object-fit: cover;" />
-                            <div class="card-body">
-                            <div class="d-flex align-items-center gap-2 mb-1">
-                                <img src="./img/user1.png" width="30" class="rounded-circle" alt="User" />
-                                <div>
-                                <strong>rainy yusuf</strong><br />
-                                <small class="text-muted">Wrote a review</small>
-                                </div>
-                            </div>
-                            <div class="mb-2 text-warning">
-                                ★★★★★
-                            </div>
-                            <p class="card-text small">
-                                I had a great experience with National Wallpaper Enterprises. Their staff is very experienced and helpful...
-                            </p>
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="https://i.pravatar.cc/40?img=1" class="reviewer-img me-2" />
+                            <div>
+                            <strong class="small">rainy yusuf</strong><br />
+                            <small class="text-muted">Wrote a review</small>
                             </div>
                         </div>
+
+                        <div class="star-rating">★★★★★</div>
+                        <p class="small mb-0">
+                            I had a great experience with National Wallpaper Enterprises. Their staff is very experienced and helpful...
+                        </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="business-card">
+                        <img src="img/hand-drawn-pizza-cartoon-illustration_52683-127397.png" class="card-img-top" alt="Business 2" />
+                        <div class="p-3">
+                        <h6 class="mb-1">Peppino</h6>
+                        <p class="text-muted small mb-2">Grant Road - Mumbai</p>
+                        <a href="#" class="btn btn-sm btn-success mb-3">WhatsApp</a>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="https://i.pravatar.cc/40?img=2" class="reviewer-img me-2" />
+                            <div>
+                            <strong class="small">sarvesh jathar</strong><br />
+                            <small class="text-muted">Wrote a review</small>
+                            </div>
                         </div>
 
-                        <!-- Repeat card for others -->
-                        <!-- Card 2, Card 3, ... -->
+                        <div class="star-rating">★★★★★</div>
+                        <p class="small mb-0">
+                            I recently bought products from Peppino, and I am very happy with my experience...
+                        </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="business-card">
+                        <img src="img/514dh66VZKL._AC_UF1000,1000_QL80_.png" class="card-img-top" alt="Business 3" />
+                        <div class="p-3">
+                        <h6 class="mb-1">Acewood Studio Ply...</h6>
+                        <p class="text-muted small mb-2">Dadar West - Mumbai</p>
+                        <a href="#" class="btn btn-sm btn-success mb-3">WhatsApp</a>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="https://i.pravatar.cc/40?img=3" class="reviewer-img me-2" />
+                            <div>
+                            <strong class="small">Rakesh Kherade</strong><br />
+                            <small class="text-muted">Wrote a review</small>
+                            </div>
+                        </div>
+
+                        <div class="star-rating">★★★★★</div>
+                        <p class="small mb-0">Good collection and competitive price.</p>
+                        </div>
+                    </div>
 
                     </div>
-                    </div>
-
-
+                </div>
                 
-            </main>
+                <div class="d-grid gap-2">
+                   <button class="btn btn-primary" type="button">Load More</button>
+                </div>
 
-            <footer class="v_tbdr ">
+                <!-- ✅ RELATED ARTICLES -->
+                <div class="container my-5">
+                    <h4 class="mb-3">Related Articles</h4>
+                    <div class="scrolling-articles">
 
-            </footer>           
-                                        
+                    <!-- Article 1 -->
+                    <div class="article-card">
+                        <img src="img/young-woman-personal-assistant-standing-260nw-1470157970 (1).png" alt="Work Balance" />
+                        <div class="article-body">
+                        <p class="article-title">Emails, Errands, and Finding Work Life Balance...</p>
+                        <a href="#" class="article-link">Explore</a>
+                        </div>
+                    </div>
 
+                    <!-- Article 2 -->
+                    <div class="article-card">
+                        <img src="img/image (9).png" alt="Aerobics Class" />
+                        <div class="article-body">
+                        <p class="article-title">Aerobics Classes in Mumbai: Guide to Fun and Fitness...</p>
+                        <a href="#" class="article-link">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="article-card">
+                        <img src="img/overhead-view-of-waffles-garnished-with-royalty-free-image-1646315724.png" alt="Late Night Snacks" />
+                        <div class="article-body">
+                        <p class="article-title">Healthy Late Night Snacks Without Wrecking Your Sleep...</p>
+                        <a href="#" class="article-link">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Article 4 -->
+                    <div class="article-card">
+                        <img src="img/image (10).png" alt="IPL" />
+                        <div class="article-body">
+                        <p class="article-title">IPL 2025 Highlights: One League, One Million Moments</p>
+                        <a href="#" class="article-link">Explore</a>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+
+           </main>
+           <footer class="v_tbdr">
+  
+
+
+           </footer>
                         
             <script>
                         window.onload = function () {
