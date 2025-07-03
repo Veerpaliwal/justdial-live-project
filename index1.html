@@ -408,17 +408,20 @@
             
       </head>
          <body>
-           <div class="container-fluid p-4  v_tbdr ">
-              <header class="v_tbdr">
-                <div class="row m-0 h-100">
-                    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
-                        <div class="logo-wrapper">
-                              <span class="just">Just</span><span class="dial">dial</span>
-                        </div>
-                    </div>
-                    <div class="col-4 p-0 v_tbdr"></div>
-                    <div class="col-6 p-0 v_tbdr d-flex align-items-center">
-                        <ul class="nav">
+            <button onclick="Toprightbottom()" class=" btn btn-dark rounded-5 position-fixed  bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
+                <i class="fa-solid fa-chevron-up "></i>
+            </button>
+                <div class="container-fluid p-4  v_tbdr ">
+                    <header class="v_tbdr">
+                        <div class="row m-0 h-100">
+                            <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
+                                <div class="logo-wrapper">
+                                   <span class="just">Just</span><span class="dial">dial</span>
+                             </div>
+                      </div>
+                       <div class="col-4 p-0 v_tbdr"></div>
+                        <div class="col-6 p-0 v_tbdr d-flex align-items-center">
+                          <ul class="nav">
                             <li class="nav-item">
                                <div class="dropdown  ">
                                      <button class="btn  dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1513,10 +1516,42 @@
             </script>
             
           
-           
+       
             
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script>
+                window.addEventListener("scroll", () => {
+                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    const windowHeight = window.innerHeight;
+                    const docHeight = document.documentElement.scrollHeight;
+
+                    const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
+
+                    const element = document.querySelector('.v_Toprightbottom'); // fixed variable name
+
+                    if (scrollPercent >= 2) { // fixed scroll threshold
+                        console.log("hello");
+                        if (element.classList.contains("d-none")) {
+                            element.classList.remove("d-none");
+                            element.classList.add("d-flex");
+                        }
+                    } else {
+                        if (!element.classList.contains("d-none")) {
+                            element.classList.remove("d-flex");
+                            element.classList.add("d-none");
+                        }
+                    }
+                });
+        </script>
+
+
+         <script>
+            function Toprightbottom(){
+                document.documentElement.scrollTop = 0;
+            }
+        </script> 
     </body>
 </html>
