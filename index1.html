@@ -406,6 +406,13 @@
                         }
                     </style>
 
+                    <style>
+  .card img {
+    height: 120px;
+    object-fit: cover;
+  }
+</style>
+
             
       </head>
          <body>
@@ -706,19 +713,19 @@
                     </div>
                 </div>
             </div>     
+
             
-            
-            
-                            
             <div class="container my-5">
-                <h4 class="mb-3">Trending Searches Near You <span class="badge bg-danger">NEW</span></h4>
+                <div class="category-box">
+                     <h4 class="mb-3">Trending Searches Near You <span class="badge bg-danger">NEW</span></h4>
                 <p class="text-muted">Stay updated with the latest local trends.</p>
                                 <div class="position-relative">
                     <button class="scroll-btn left btn btn-light shadow" onclick="scrollLeft()">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
-
-                    <div class="scrolling-wrapper" id="autoScroll">
+                </div>
+               
+                   <div class="scrolling-wrapper" id="autoScroll">
                         <!-- Card 1 -->
                         <div class="scroll-card">
                         <img src="img/image.png" alt="Car Rental">
@@ -764,36 +771,144 @@
                         </div>
                         </div>
                     </div>
-
                     <button class="scroll-btn right btn btn-light shadow" onclick="scrollRight()">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
-                    <h2>Latest Movies & Review</h2>
+    
                     </div>
-                        <!-- 🧱 HTML -->
-                    <div class="scrolling-wrapper" id="autoScroll">
-                        <div class="scroll-box">
-                            <img src="img/MV5BZjdjODdiMTQtYWIwZi00NTQyLWE0YWItMzk3MTBhOGUyNDY3XkEyXkFqcGc@._V1_QL75_UY281_CR18,0,190,281_.png" alt="Image 1">
-                            <h6>Sitaare Zameen Par (Hindi Movie) </h6>
-                            <p class="text-muted">Hindi . 2D</p>
-                     </div>
-                     <div class="scroll-box">
-                            <img src="img/maa-et00437726-1750928782.png" alt="Image 2">
-                            <h6>Maa (2025 Film) (Hindi Movie)</h6>
-                             <p class="text-muted">Hindi . 2D</p>
-                     </div>
-                    <div class="scroll-box">
-                            <img src="img/MV5BYWFmZjQ3ZTUtYTEyNy00ODEzLWJmMGYtNzFlMWUxMmIwMTAzXkEyXkFqcGc@._V1_QL75_UX1230_.png" alt="Image 3">
-                            <h6>F1 (English movie)</h6>
-                            <p class="text-muted">English . 2D</p>
-                    </div>
-                     <div class="scroll-box">
-                            <img src="img/MV5BNTdhMjA2NWMtNmVkOC00ODdiLTgwNjItNWQ5ZGI1ZTEzODI1XkEyXkFqcGc@._V1_FMjpg_UX1000_.png" alt="Image 2">
-                            <h6>Kannappa (Tamil Movie)</h6>
-                            <p class="text-muted">Tamil . 2D</p>
-                     </div>
-                        
-                     </div>
+
+        <div class="container my-5">
+  <h2>Latest Movies & Review</h2>
+
+  <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide -->
+      <div class="carousel-item active">
+        <div class="row g-3">
+
+          <!-- Card 1 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/MV5BMDE1N2EzMjAtMDY1My00YWE5LWEyYjYtYmE3YjZjNzQwNDhmXkEyXkFqcGc@._V1_.png" class="card-img-top img-fluid" alt="Jurassic" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>Jurassic World Rebirth</h6>
+                <p class="text-muted">English • 2D</p>
+                <span class="badge bg-danger">85%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/MV5BZjdjODdiMTQtYWIwZi00NTQyLWE0YWItMzk3MTBhOGUyNDY3XkEyXkFqcGc@._V1_QL75_UY281_CR18,0,190,281_.png" class="card-img-top img-fluid" alt="Sitaare" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>Sitaare Zameen Par</h6>
+                <p class="text-muted">Hindi • 2D</p>
+                <span class="badge bg-danger">74%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/MV5BNTdhMjA2NWMtNmVkOC00ODdiLTgwNjItNWQ5ZGI1ZTEzODI1XkEyXkFqcGc@._V1_FMjpg_UX1000_.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">English • 2D</p>
+                <span class="badge bg-danger">90%</span>
+              </div>
+            </div>
+          </div>
+
+           <!-- Card 3 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/maa-et00437726-1750928782.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">Maa • 2D</p>
+                <span class="badge bg-danger">90%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+       
+      
+      
+      <!-- Next slide (add more if needed) -->
+      <div class="carousel-item">
+        <div class="row g-3">
+          <!-- add more 4 cards here -->
+            <!-- Card 4 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/et00420723-ntpwjgrfmu-landscape.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">How To Train Your Dragon 3d English Movie • 3D</p>
+                <span class="badge bg-danger">80%</span>
+              </div>
+            </div>
+          </div>
+
+           <!-- Card 5 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/image (17).png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">Jarann (Marathi Movie) • 2D</p>
+                <span class="badge bg-danger">90%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/hq720.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">Housefull 5b Hindi Movie • 4D</p>
+                <span class="badge bg-danger">95%</span>
+              </div>
+            </div>
+          </div>
+
+           <!-- Card 7 -->
+          <div class="col-3">
+            <div class="card h-100 w-100">
+              <img src="img/m3gan20-20250204113419-23458.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
+              <div class="card-body">
+                <h6>F1</h6>
+                <p class="text-muted">M3GAN 2.0 (English Movie) • 3D</p>
+                <span class="badge bg-danger">85%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+</div>     
+                     
 
                     <div class="container my-5">
                         <h4 class="mb-3">Popular Searches</h4>
@@ -842,7 +957,7 @@
 
                     <h2>Recent Activity</h2>
                     
-                    <div class="container my-5">
+                    <div class="container my-5 ">
                         <h4 class="mb-4">Popular Searches</h4>
                         <div class="scrolling-wrapper">
 
@@ -913,6 +1028,7 @@
                         </div>
                     </div>
 
+                    
                     </div>
                 </div>
                 
