@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find Businesses Near You on Local Search Engine - Justdial</title>
+        <link rel="icon" href="./img/favicon.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+             .v_tbdr{
+                border: 1px solid black;
+             }
+             body{
+                background-color: #F1E7E2;
+             }
+             header{
+                height: 80px;
+             }
+             main{
+                min-height: 3500px;
+             }
+             footer{
+                height: 2500px;
+             }
+        </style>
+        <style>
+            .logo-wrapper {
+                    font-family: Arial, sans-serif;
+                    font-weight: bold;
+                    font-size: 28px;
+                    padding: 5px 10px;
+                
+                    
+                }
+
+                .just {
+                    color: #0076d6; /* Blue */
+                }
+
+                .dial {
+                    color: #ff6600; /* Orange */
+                }
+
+        </style>
+        <style>
+                 .location-wrapper {
+                display: inline-block; /* So it doesn't take full width */
+                }
+
+                .location-box {
+                width: 280px; /* Box size */
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+
+                .location-box .form-control {
+                border: none;
+                box-shadow: none;
+                }
+
+                .location-box .input-group-text {
+                background-color: white;
+                border: none;
+                }
+
+        </style>
+        <style>
+                        .location-box,
+            .search-box {
+            width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: white;
+            }
+
+            .location-box .form-control,
+            .search-box .form-control {
+            border: none;
+            box-shadow: none;
+            }
+
+        </style>
+        <style>
+            .search-box {
+                    width: 280px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                    background-color: white;
+                    }
+                    .search-box .form-control {
+                    border: none;
+                    box-shadow: none;
+                    }
+
+        </style>
+        <style>
+            #carouselExampleAutoplaying {
+                width: 600px;
+                height: 250px;
+                overflow: hidden;
+                border-radius: 12px;
+                margin-top: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            #carouselExampleAutoplaying .carousel-item,
+            #carouselExampleAutoplaying .carousel-inner,
+            #carouselExampleAutoplaying img {
+                height: 100%;
+                object-fit: cover;
+            }
+         </style>
+         <style>
+           .category-section {
+                    border: 1px solid #ddd;
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin: 20px 0;
+                    background-color: #fff;
+                    }
+
+                    .category-section h5 {
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    }
+
+                    .card-group {
+                    display: flex;
+                    gap: 20px;
+                    }
+
+                    .card {
+                    width: 150px;
+                    text-align: center;
+                    }
+
+                    .card img {
+                    width: 100%;
+                    height: 100px;
+                    object-fit: cover;
+                    border-radius: 8px;
+                    }
+
+                    .card p {
+                    margin-top: 8px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    }
+
+         </style>
+         <style>
+             .category-box {
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: #fdfdfd;
+                margin: 20px 0;
+                }
+
+                .icon-set {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                }
+
+                .icon-card {
+                text-align: center;
+                margin: 10px;
+                }
+
+                .icon-card img {
+                width: 50px;
+                height: 50px;
+                object-fit: contain;
+                }
+
+                .icon-label {
+                font-size: 14px;
+                margin-top: 5px;
+                font-weight: 500;
+                }
+
+
+         </style>
+         <style>
+                
+            .custom-card {
+                width: 350px;
+                height: 100px;
+                display: flex;
+                flex-direction: row;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+
+            .custom-card img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+            }
+
+         
+      </style>
+        <style>
+      
+       
+            .scrolling-wrapper {
+                display: flex;
+                overflow-x: auto;
+                gap: 1rem;
+                padding-bottom: 10px;
+            }
+
+            .scrolling-wrapper::-webkit-scrollbar {
+                display: none; /* hide scrollbar */
+            }
+
+            .scroll-card {
+                flex: 0 0 auto;
+                width: 350px;
+                height: 100px;
+                display: flex;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+                background: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+
+            .scroll-card img {
+                width: 100px;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .scroll-card .info {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .scroll-card .info a {
+                font-size: 14px;
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .scroll-card .info h6 {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 0;
+            }
+            </style>
+         </style>
+         <style>
+                    .scroll-box {
+                width: 250px;
+                height: 350px;
+                flex: 0 0 auto;
+                background-color: white;
+                margin-right: 16px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+
+            .scroll-box img {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+            }
+            .scroll-box h6 {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 8px 0 4px;
+            }
+            .scroll-box p {
+                font-size: 14px;
+                color: #6c757d;
+                margin: 0;
+            }
+            </style>
+            <style>
+                .card-title {
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+                .card-text {
+                    font-size: 0.875rem;
+                }
+                .text-warning {
+                    font-size: 1rem;
+                    letter-spacing: 1px;
+                }
+            </style>
+              <style>
+                    .business-card {
+                    min-width: 300px;
+                    max-width: 320px;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    background: #fff;
+                    flex-shrink: 0;
+                    }
+                    .scrolling-wrapper {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 1rem;
+                    padding-bottom: 1rem;
+                    }
+                    .scrolling-wrapper::-webkit-scrollbar {
+                    display: none;
+                    }
+                    .card-img-top {
+                    height: 180px;
+                    object-fit: cover;
+                    }
+                    .reviewer-img {
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    }
+                    .star-rating {
+                    color: #ffa500;
+                    font-size: 1rem;
+                    margin: 0.5rem 0;
+                    }
+                </style>
+                  <style>
+                        /* Scroll section styling */
+                        .scrolling-wrapper, .scrolling-articles {
+                        display: flex;
+                        overflow-x: auto;
+                        gap: 1rem;
+                        padding-bottom: 1rem;
+                        scroll-behavior: smooth;
+                        }
+
+                        .scrolling-wrapper::-webkit-scrollbar,
+                        .scrolling-articles::-webkit-scrollbar {
+                        display: none;
+                        }
+
+                        .business-card, .article-card {
+                        flex: 0 0 auto;
+                        width: 300px;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        border: 1px solid #ddd;
+                        background: #fff;
+                        }
+
+                        .card-img-top,
+                        .article-card img {
+                        width: 100%;
+                        height: 180px;
+                        object-fit: cover;
+                        }
+
+                        .reviewer-img {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        }
+
+                        .star-rating {
+                        color: #ffa500;
+                        font-size: 1rem;
+                        margin: 0.5rem 0;
+                        }
+
+                        .article-body {
+                        padding: 0.75rem;
+                        }
+
+                        .article-title {
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 0.5rem;
+                        }
+
+                        .article-link {
+                        color: #007bff;
+                        text-decoration: none;
+                        font-weight: 500;
+                        }
+
+                        .article-link:hover {
+                        text-decoration: underline;
+                        }
+
+                        .d-grid {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 1rem;
+                        }
+                    </style>
+
+                    <style>
+                        .card img {
+                            height: 120px;
+                            object-fit: cover;
+                        }
+                        </style>
+
+                        <style>
+                        .card-header {
+                        background-color: #f8f9fa;
+                        font-size: 0.9rem;
+                        }
+                        .card-header strong {
+                        font-size: 1rem;
+                        }
+                        .whatsapp-badge {
+                        display: flex;
+                        align-items: center;
+                        padding: 2px 6px;
+                        font-size: 0.8rem;
+                        border-radius: 20px;
+                        }
+                        .whatsapp-badge img {
+                        width: 16px;
+                        height: 16px;
+                        margin-right: 4px;
+                        }
+                        .card-body p {
+                        font-size: 0.85rem;
+                        }
+                        .text-warning {
+                        letter-spacing: 1px;
+                        }
+                        </style>  
+                        <style>
+                            .v_rotate-90{
+                                transform: rotate(90deg);
+                                transform-origin: left top;
+                                white-space : nowrap;
+
+                            }
+                            .v_adv_free {
+                                right: -115px !important;
+                               
+                               
+                            }
+                           
+                            
+                        </style>  
+                        <style>
+                            .v_hieght{
+                                height: 240px;
+                            }
+                        </style> 
+                 
+           
+                      <style>           
+                        
+                       .k_slide {
+                        width: 100%;
+                        max-width: 500px;
+                        margin: auto;
+                        }
+
+                        .scroll-container {
+                        display: flex;
+                        gap: 15px;
+                        overflow-x: auto;
+                        padding: 10px 0;
+                        }
+
+                        .category-card {
+                        background: #0076d7;
+                        color: #fff;
+                        min-width: 160px;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        flex-shrink: 0;
+                        text-align: center;
+                        transition: transform 0.3s ease;
+                        }
+
+                        .category-card img {
+                        width: 100%;
+                        height: auto;
+                        }
+
+                        .category-title {
+                        font-weight: bold;
+                        font-size: 14px;
+                        margin-top: 5px;
+                        }
+
+                        .category-desc {
+                        font-size: 12px;
+                        margin-bottom: 5px;
+                        }
+                        </style> 
+                        <style>
+                           .v_bl_m1{
+                                height: 250px;
+                            }
+                            .v_bl_m1 img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            }
+                          .v_bl_m2 {
+                                height: 130px;
+                            }
+                            .v_bl_m3 {
+                                height: 330px;
+                            }
+                        </style>
+
+
+                  
+          </head>
+                <body>
+                    <ul class=" v_adv_free  nav flex-column position-fixed top-50 end-0 ">
+                        <li class="nav-item v_rotate-90 mb-5">
+                            <a class="rounded-bottom nav-link active bg-danger text-white" aria-current="page" href="#">Advertise</a>
+                        </li>
+                        <li class="nav-item v_rotate-90 mt-5">
+                            <a class="rounded-bottom nav-link bg-primary text-white" href="#">Free Listing</a>
+                        </li>
+                    </ul>                                   
+                    <button onclick="Toprightbottom()" class=" btn btn-dark rounded-5 position-fixed  bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
+                        <i class="fa-solid fa-chevron-up "></i>
+                    </button>
+                        <div class="container-fluid p-4 pt-0 pb-0 v_tbdr  ">
+                            <header class="v_tbdr fixed-top bg-white ">
+                                <div class="row m-0 h-100">
+                                    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
+                                        <div class="logo-wrapper">
+                                        <span class="just">Just</span><span class="dial">dial</span>                                                     
+                                    </div>
+                                   
+                            </div>
+                            <div class="col-4 p-0 v_tbdr"></div>
+                                <div class="col-6 p-0 v_tbdr d-flex align-items-center">
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                    <div class="dropdown  ">
+                                            <button class="btn  dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-language "></i> En
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Hindi-H</a></li>
+                                                    <li><a class="dropdown-item" href="#">English-E</a></li>
+                                                    <li><a class="dropdown-item" href="#"> ગુજરાતી-GU</a></li>
+                                                    <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
+                                                    <li><a class="dropdown-item" href="#"> தமிழ்-TM</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a class="nav-link text-black" href="#">Investor Relations</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
+                                    </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-primary">Login/sign-up</button>
+                                    
+                            </div>
+                        </div>
+                        
+                    </header>
+                    <br/>
+                    <br/>
+                                       
+                    
+                    <main class="v_tbdr mt-5  p-0">
+                           <section class="v_bl_m1 v_tbdr">
+                             <img src="img/big-dinner-table-with-italian-food-pizzas-and-pastas.png" alt="image">
+                           </section>
+                           <div class="container">
+                                <div class="row justify-content-between text-center">
+                                    <div class="col-md-3">
+                                    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px;">
+                                        <img src="img/overhead-view-of-waffles-garnished-with-royalty-free-image-1646315724.png" alt="img" style="height:50px; margin-right:10px;">
+                                        <span>
+                                            <h5>BOOK A TABLE</h5>
+                                            <p class="text-body-secondary">Make reservations ></p>
+                                        </span>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px;">
+                                        <img src="img/hand-drawn-pizza-cartoon-illustration_52683-127397.png" alt="img" style="height:50px; margin-right:10px;">
+                                        <span>
+                                            <h5>WHAT'S TRENDING ?</h5>
+                                            <P class="text-body-secondary">Try It Yourself ></P>
+                                        </span>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px;">
+                                        <img src="img/hand-large-dish-ordering-food-260nw-742515526.png" alt="img" style="height:50px; margin-right:10px;">
+                                        <span>
+                                            <h5>ORDER FOOD</h5>
+                                            <P class="text-body-secondary">5830 RESTAURANT ></P>
+                                        </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                           </section>
+                           <section class="v_bl_m3 v_tbdr">
+
+                 <div class="container mt-4">
+                    <div class="d-flex gap-3 flex-wrap">
+                        
+                        <div class="card" style="width: 12rem; height: 300px;">
+                        <img src="img/Wedding-CATERERS-in-surat-scaled (1).jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Indian Flavours</h5>
+                             <p class="card-text text-left">-Tandoori</p>
+                             <p class="card-text">-South Indian</p>
+                             <p class="card-text">-Pure Vage</p>
+                             <p class="card-text text-primary">-More</p>
+                            
+                            
+                            
+                        </div>
+                        </div>
+
+                          <div class="card" style="width: 12rem; height: 300px;">
+                        <img src="img/360_F_314363347_jiMEfkFWHqJ9J5r3IjihtTlvyf7ECYpl.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Global Cuisines</h5>
+                            <p class="card-text">-Continental</p>
+                            <p class="card-text">-Pan Asian</p>
+                            <p class="card-text">-Chinese</p>
+                            <p class="card-text text-primary">-More</p>
+                            
+                        </div>
+                        </div>
+
+                          <div class="card" style="width: 12rem; height: 300px;">
+                        <img src="img/pexels-photo-1089930.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">NightLife</h5>
+                            <p class="card-text">-Pubs</p>
+                            <p class="card-text">-Lounge Bars</p>
+                            <p class="card-text">-Night Clubs</p>
+                            <p class="card-text text-primary">-More</p>
+                          
+                        </div>
+                        </div>
+
+                          <div class="card" style="width: 12rem; height: 300px;">
+                        <img src="img/pbvookpg_quesadilla_625x300_18_August_20.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Quick Bites</h5>
+                            <p class="card-text">-Bakeris</p>
+                            <p class="card-text">-Coffee Shops</p>
+                            <p class="card-text">-Fast Food</p>
+                            <p class="card-text text-primary ">-More</p>
+                           
+                        </div>
+                        </div>
+
+                          <div class="card" style="width: 12rem; height: 300px;">
+                        <img src="img/overhead-view-of-waffles-garnished-with-royalty-free-image-1646315724.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Sweet Tooth</h5>
+                            <p class="card-text">-Cake Shops</p>
+                            <p class="card-text">-Desserts</p>
+                            <p class="card-text">-Donut Outlets</p>
+                            <p class="card-text text-primary">-More</p>
+                            
+                        </div>
+                        </div>
+
+
+                        
+
+                    
+
+                       </section>
+                                             
+                    </main>
+       
+          </footer>
+
+
+                </footer>
+                                
+                    <script>
+                                window.onload = function () {
+                                const topTexts = [
+                                    "5.9 Crore + product & services",
+                                    "4.7 Crore + business"
+                                ];
+
+                                let topIndex = 0;
+                                const rotatingText = document.getElementById("rotatingText");
+
+                                setInterval(() => {
+                                    topIndex = (topIndex + 1) % topTexts.length;
+                                    rotatingText.textContent = topTexts[topIndex];
+                                }, 1000);
+
+                                const rotatingWords = [
+                                    "Packers and Movers",
+                                    "Restaurants",
+                                    "Doctors",
+                                    "Electricians",
+                                    "Plumbers"
+                                ];
+
+                                let searchIndex = 0;
+                                const input = document.getElementById("searchInput");
+
+                                setInterval(() => {
+                                    searchIndex = (searchIndex + 1) % rotatingWords.length;
+                                    input.setAttribute("placeholder", "Search for " + rotatingWords[searchIndex]);
+                                }, 1000);
+                                };
+                    </script>
+                    
+                
+            
+                    
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                
+                <script>
+                        window.addEventListener("scroll", () => {
+                            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                            const windowHeight = window.innerHeight;
+                            const docHeight = document.documentElement.scrollHeight;
+
+                            const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
+
+                            const element = document.querySelector('.v_Toprightbottom'); // fixed variable name
+
+                            if (scrollPercent >= 2) { // fixed scroll threshold
+                                console.log("hello");
+                                if (element.classList.contains("d-none")) {
+                                    element.classList.remove("d-none");
+                                    element.classList.add("d-flex");
+                                }
+                            } else {
+                                if (!element.classList.contains("d-none")) {
+                                    element.classList.remove("d-flex");
+                                    element.classList.add("d-none");
+                                }
+                            }
+                        });
+                </script>
+
+
+                <script>
+                    function Toprightbottom(){
+                        document.documentElement.scrollTop = 0;
+                    }
+                </script> 
+                
+
+                <script>
+                // make right equal to left
+                function setRightHeight() {
+                const left = document.querySelector(".col-md-6 .carousel");
+                const right = document.querySelector(".col-md-6.d-flex.flex-column");
+
+                if (left && right) {
+                    right.style.height = left.offsetHeight + "px";
+                }
+                }
+
+                window.addEventListener("load", setRightHeight);
+                window.addEventListener("resize", setRightHeight);
+
+                </script>
+
+
+            </body>
+        </html>
+
+
+
+
+
+
+
+
