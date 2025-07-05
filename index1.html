@@ -439,20 +439,45 @@
                         .text-warning {
                         letter-spacing: 1px;
                         }
-                        </style>            
+                        </style>  
+                        <style>
+                            .v_rotate-90{
+                                transform: rotate(90deg);
+                                transform-origin: left top;
+                                white-space : nowrap;
+
+                            }
+                            .v_adv_free {
+                                right: -115px !important;
+                               
+                               
+                            }
+                           
+                            
+                        </style>   
+
+                              
             </head>
                 <body>
-                                     
+                    <ul class=" v_adv_free  nav flex-column position-fixed top-50 end-0 ">
+                        <li class="nav-item v_rotate-90 mb-5">
+                            <a class="rounded-bottom nav-link active bg-danger text-white" aria-current="page" href="#">Advertise</a>
+                        </li>
+                        <li class="nav-item v_rotate-90 mt-5">
+                            <a class="rounded-bottom nav-link bg-primary text-white" href="#">Free Listing</a>
+                        </li>
+                    </ul>                                   
                     <button onclick="Toprightbottom()" class=" btn btn-dark rounded-5 position-fixed  bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
                         <i class="fa-solid fa-chevron-up "></i>
                     </button>
-                        <div class="container-fluid p-4  v_tbdr ">
-                            <header class="v_tbdr">
+                        <div class="container-fluid p-4 pt-0 pb-0 v_tbdr  ">
+                            <header class="v_tbdr fixed-top bg-white ">
                                 <div class="row m-0 h-100">
                                     <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
                                         <div class="logo-wrapper">
-                                        <span class="just">Just</span><span class="dial">dial</span>
+                                        <span class="just">Just</span><span class="dial">dial</span>                                                     
                                     </div>
+                                   
                             </div>
                             <div class="col-4 p-0 v_tbdr"></div>
                                 <div class="col-6 p-0 v_tbdr d-flex align-items-center">
@@ -487,11 +512,17 @@
                         </div>
                         
                     </header>
-                    <main class="v_tbdr mt-3 p-0">
-                        <h2>search across '5.9 Crore + 
+                    <br/>
+                    <br/>
+                                       
+                    
+                               <main class="v_tbdr mt-5  p-0">
+
+                                <h2>search across '5.9 Crore + 
                             <span  id="rotatingText" style="color: #0076D7;">product & services</span>
                         </h2>
-                    <div class="d-flex gap-3 align-items-center flex-wrap">
+                        
+                    <div class="d-flex gap-3 align-items-center flex-wrap mt-5">
         
                     <!-- 📍 Select Location Input -->
                             <div class="input-group location-box">
@@ -1250,7 +1281,7 @@
                                 </div>
                                 </div>
 
-                            <div class="container my-5">
+                        <div class="container my-5">
                                 <h4 class="mb-3">Related Articles</h4>
 
                                 <div id="articlesCarousel" class="carousel slide " data-bs-ride="carousel">
@@ -1314,6 +1345,8 @@
 
                                 </div>
                                 </div>
+
+
                 </main>
                 <footer class="v_tbdr">
                         <div class="mt-2 d-flex align-items-center">
@@ -1713,5 +1746,19 @@
                         document.documentElement.scrollTop = 0;
                     }
                 </script> 
+
+ <script>
+const stickySearch = document.getElementById('stickySearch');
+const mainSearch = document.getElementById('mainSearch');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY >= mainSearch.offsetTop + mainSearch.offsetHeight) {
+    stickySearch.style.display = 'block';
+  } else {
+    stickySearch.style.display = 'none';
+  }
+});
+</script>
+
             </body>
         </html>
