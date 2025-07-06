@@ -8,9 +8,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
-             .v_tbdr{
-                border: 1px solid black;
-             }
+             
+                
+             
              body{
                 background-color: #F1E7E2;
              }
@@ -538,47 +538,81 @@
                         <i class="fa-solid fa-chevron-up "></i>
                     </button>
                         <div class="container-fluid p-4 pt-0 pb-0 v_tbdr  ">
-                            <header class="v_tbdr fixed-top bg-white ">
-                                <div class="row m-0 h-100">
-                                    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center ">
-                                        <div class="logo-wrapper">
-                                        <span class="just">Just</span><span class="dial">dial</span>                                                     
-                                    </div>
-                                   
-                            </div>
-                            <div class="col-4 p-0 v_tbdr"></div>
-                                <div class="col-6 p-0 v_tbdr d-flex align-items-center">
-                                <ul class="nav">
-                                    <li class="nav-item">
-                                    <div class="dropdown  ">
-                                            <button class="btn  dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa-solid fa-language "></i> En
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Hindi-H</a></li>
-                                                    <li><a class="dropdown-item" href="#">English-E</a></li>
-                                                    <li><a class="dropdown-item" href="#"> ગુજરાતી-GU</a></li>
-                                                    <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
-                                                    <li><a class="dropdown-item" href="#"> தமிழ்-TM</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item  ">
-                                        <a class="nav-link text-black" href="#">Investor Relations</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
-                                    </li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary">Login/sign-up</button>
-                                    
-                            </div>
-                        </div>
-                        
-                    </header>
+                            <header class="v_tbdr fixed-top bg-white">
+  <div class="row m-0 h-100 align-items-center">
+    <!-- Left Logo -->
+    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center">
+      <div class="logo-wrapper">
+        <span class="just">Just</span><span class="dial">dial</span>
+      </div>
+    </div>
+
+    <!-- Location + Search -->
+    <div class="col-4 p-0 v_tbdr">
+      <div
+        id="headerInputs"
+        class="d-flex justify-content-end align-items-center gap-2"
+        style="padding: 10px;"
+      >
+        <!-- 📍 Location -->
+        <div class="input-group" style="width: 180px; height: 35px;">
+          <span class="input-group-text">
+            <i class="fas fa-map-marker-alt text-primary"></i>
+          </span>
+          <input type="text" class="form-control" placeholder="Select Location" />
+        </div>
+
+        <!-- 🔍 Search -->
+        <div class="input-group" style="width: 250px; height: 35px;">
+          <span class="input-group-text bg-white border-end-0">
+            <i class="fas fa-search text-primary"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control border-start-0"
+            placeholder="Search for Packers and Movers"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Nav -->
+    <div class="col-6 p-0 v_tbdr d-flex align-items-center justify-content-end gap-2">
+      <ul class="nav">
+        <li class="nav-item">
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle text-primary"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-language"></i> En
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Hindi-H</a></li>
+              <li><a class="dropdown-item" href="#">English-E</a></li>
+              <li><a class="dropdown-item" href="#">ગુજરાતી-GU</a></li>
+              <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
+              <li><a class="dropdown-item" href="#">தமிழ்-TM</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" href="#">Investor Relations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-primary">Login/sign-up</button>
+    </div>
+  </div>
+</header>
+
                     <br/>
                     <br/>
                                        
@@ -588,53 +622,53 @@
                              <img src="img/big-dinner-table-with-italian-food-pizzas-and-pastas.png" alt="image">
                            </section>
                          <section>
-  <div class="container">
-    <div class="row justify-content-between text-center">
+                        <div class="container">
+                            <div class="row justify-content-between text-center">
 
-      <!-- Box 1 -->
-      <div class="col-md-3">
-        <a href="business-details.html" style="text-decoration: none; color: inherit;">
-          <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
-            <img src="img/overhead-view-of-waffles-garnished-with-royalty-free-image-1646315724.png" alt="img" style="height:50px; margin-right:10px;">
-            <span>
-              <h5>BOOK A TABLE</h5>
-              <p class="text-body-secondary">Make reservations ></p>
-            </span>
-          </div>
-        </a>
-      </div>
+                            <!-- Box 1 -->
+                            <div class="col-md-3">
+                                <a href="business-details.html" style="text-decoration: none; color: inherit;">
+                                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
+                                    <img src="img/overhead-view-of-waffles-garnished-with-royalty-free-image-1646315724.png" alt="img" style="height:50px; margin-right:10px;">
+                                    <span>
+                                    <h5>BOOK A TABLE</h5>
+                                    <p class="text-body-secondary">Make reservations ></p>
+                                    </span>
+                                </div>
+                                </a>
+                            </div>
 
-      <!-- Box 2 -->
-      <div class="col-md-3">
-        <a href="#" style="text-decoration: none; color: inherit;">
-          <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
-            <img src="img/hand-drawn-pizza-cartoon-illustration_52683-127397.png" alt="img" style="height:50px; margin-right:10px;">
-            <span>
-              <h5>WHAT'S TRENDING ?</h5>
-              <p class="text-body-secondary">Try It Yourself ></p>
-            </span>
-          </div>
-        </a>
-      </div>
+                            <!-- Box 2 -->
+                            <div class="col-md-3">
+                                <a href="#" style="text-decoration: none; color: inherit;">
+                                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
+                                    <img src="img/hand-drawn-pizza-cartoon-illustration_52683-127397.png" alt="img" style="height:50px; margin-right:10px;">
+                                    <span>
+                                    <h5>WHAT'S TRENDING ?</h5>
+                                    <p class="text-body-secondary">Try It Yourself ></p>
+                                    </span>
+                                </div>
+                                </a>
+                            </div>
 
-      <!-- Box 3 -->
-      <div class="col-md-3">
-        <a href="#" style="text-decoration: none; color: inherit;">
-          <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
-            <img src="img/hand-large-dish-ordering-food-260nw-742515526.png" alt="img" style="height:50px; margin-right:10px;">
-            <span>
-              <h5>ORDER FOOD</h5>
-              <p class="text-body-secondary">5830 RESTAURANT ></p>
-            </span>
-          </div>
-        </a>
-      </div>
+                            <!-- Box 3 -->
+                            <div class="col-md-3">
+                                <a href="#" style="text-decoration: none; color: inherit;">
+                                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded-4 d-flex align-items-center" style="height:90px; cursor:pointer;">
+                                    <img src="img/hand-large-dish-ordering-food-260nw-742515526.png" alt="img" style="height:50px; margin-right:10px;">
+                                    <span>
+                                    <h5>ORDER FOOD</h5>
+                                    <p class="text-body-secondary">5830 RESTAURANT ></p>
+                                    </span>
+                                </div>
+                                </a>
+                            </div>
 
-    </div>
-  </div>
-</section>
+                            </div>
+                        </div>
+                        </section>
 
-                                    
+                                                            
                            <section class="v_bl_m3 v_tbdr">
 
                  <div class="container mt-4">
