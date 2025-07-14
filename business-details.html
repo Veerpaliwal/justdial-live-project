@@ -1,1287 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Find Businesses Near You on Local Search Engine - Justdial</title>
-        <link rel="icon" href="./img/favicon.png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
-             
-             body{
-                background-color: #F1E7E2;
-             }
-             header{
-                height: 80px;
-             }
-             main{
-                min-height: 1500px;
-             }
-             footer{
-                height: 2500px;
-             }
-        </style>
-        <style>
-            .logo-wrapper {
-                    font-family: Arial, sans-serif;
-                    font-weight: bold;
-                    font-size: 28px;
-                    padding: 5px 10px;
-                
-                    
-                }
-
-                .just {
-                    color: #0076d6; /* Blue */
-                }
-
-                .dial {
-                    color: #ff6600; /* Orange */
-                }
-
-        </style>
-        <style>
-                 .location-wrapper {
-                display: inline-block; /* So it doesn't take full width */
-                }
-
-                .location-box {
-                width: 280px; /* Box size */
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                }
-
-                .location-box .form-control {
-                border: none;
-                box-shadow: none;
-                }
-
-                .location-box .input-group-text {
-                background-color: white;
-                border: none;
-                }
-
-        </style>
-        <style>
-                        .location-box,
-            .search-box {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Businesses Near You on Local Search Engine - Justdial</title>
+    <link rel="icon" href="./img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #F1E7E2;
+        }
+        header {
+            height: 80px;
+        }
+        main {
+            min-height: 1500px;
+            margin-top: 80px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+        .logo-wrapper {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            padding: 5px 10px;
+        }
+        .just {
+            color: #0076d6;
+        }
+        .dial {
+            color: #ff6600;
+        }
+        .location-box, .search-box {
             width: 280px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             background-color: white;
-            }
-
-            .location-box .form-control,
-            .search-box .form-control {
+        }
+        .location-box .form-control, .search-box .form-control {
             border: none;
             box-shadow: none;
-            }
-
-        </style>
-        <style>
-            .search-box {
-                    width: 280px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-                    background-color: white;
-                    }
-                    .search-box .form-control {
-                    border: none;
-                    box-shadow: none;
-                    }
-
-        </style>
-        <style>
-            #carouselExampleAutoplaying {
-                width: 600px;
-                height: 250px;
-                overflow: hidden;
-                border-radius: 12px;
-                margin-top: 20px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            #carouselExampleAutoplaying .carousel-item,
-            #carouselExampleAutoplaying .carousel-inner,
-            #carouselExampleAutoplaying img {
-                height: 100%;
-                object-fit: cover;
-            }
-         </style>
-         <style>
-           .category-section {
-                    border: 1px solid #ddd;
-                    padding: 15px;
-                    border-radius: 10px;
-                    margin: 20px 0;
-                    background-color: #fff;
-                    }
-
-                    .category-section h5 {
-                    font-weight: bold;
-                    margin-bottom: 15px;
-                    }
-
-                    .card-group {
-                    display: flex;
-                    gap: 20px;
-                    }
-
-                    .card {
-                    width: 150px;
-                    text-align: center;
-                    }
-
-                    .card img {
-                    width: 100%;
-                    height: 100px;
-                    object-fit: cover;
-                    border-radius: 8px;
-                    }
-
-                    .card p {
-                    margin-top: 8px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    }
-
-         </style>
-         <style>
-             .category-box {
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                padding: 20px;
-                background-color: #fdfdfd;
-                margin: 20px 0;
-                }
-
-                .icon-set {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-wrap: wrap;
-                }
-
-                .icon-card {
-                text-align: center;
-                margin: 10px;
-                }
-
-                .icon-card img {
-                width: 50px;
-                height: 50px;
-                object-fit: contain;
-                }
-
-                .icon-label {
-                font-size: 14px;
-                margin-top: 5px;
-                font-weight: 500;
-                }
-
-
-         </style>
-         <style>
-                
-            .custom-card {
-                width: 350px;
-                height: 100px;
-                display: flex;
-                flex-direction: row;
-                overflow: hidden;
-                border-radius: 8px;
-            }
-
-            .custom-card img {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-            }
-
-         
-      </style>
-        <style>
-      
-       
-            .scrolling-wrapper {
-                display: flex;
-                overflow-x: auto;
-                gap: 1rem;
-                padding-bottom: 10px;
-            }
-
-            .scrolling-wrapper::-webkit-scrollbar {
-                display: none; /* hide scrollbar */
-            }
-
-            .scroll-card {
-                flex: 0 0 auto;
-                width: 350px;
-                height: 100px;
-                display: flex;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-                background: white;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            }
-
-            .scroll-card img {
-                width: 100px;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .scroll-card .info {
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .scroll-card .info a {
-                font-size: 14px;
-                color: #007bff;
-                text-decoration: none;
-            }
-
-            .scroll-card .info h6 {
-                font-size: 16px;
-                font-weight: 600;
-                margin: 0;
-            }
-            </style>
+        }
+        .location-box .input-group-text {
+            background-color: white;
+            border: none;
+        }
+        .custom-navbar {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .fixed-img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: cover;
+        }
+        .v_rotate-90 {
+            transform: rotate(90deg);
+            transform-origin: left top;
+            white-space: nowrap;
+        }
+        .v_adv_free {
+            right: -115px;
+        }
+        .v_bl_m1 {
+            height: 117px;
+        }
+        .v_bl_m1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .card-text {
+            font-size: 0.875rem;
+        }
+        .text-warning {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
         
-         <style>
-                    .scroll-box {
-                width: 250px;
-                height: 350px;
-                flex: 0 0 auto;
-                background-color: white;
-                margin-right: 16px;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                text-align: center;
-            }
-
-            .scroll-box img {
-                width: 100%;
-                height: 280px;
-                object-fit: cover;
-            }
-            .scroll-box h6 {
-                font-size: 16px;
-                font-weight: 600;
-                margin: 8px 0 4px;
-            }
-            .scroll-box p {
-                font-size: 14px;
-                color: #6c757d;
-                margin: 0;
-            }
-            </style>
-            <style>
-                .card-title {
-                    font-size: 1rem;
-                    font-weight: 600;
-                }
-                .card-text {
-                    font-size: 0.875rem;
-                }
-                .text-warning {
-                    font-size: 1rem;
-                    letter-spacing: 1px;
-                }
-            </style>
-              <style>
-                    .business-card {
-                    min-width: 300px;
-                    max-width: 320px;
-                    border: 1px solid #ddd;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    background: #fff;
-                    flex-shrink: 0;
-                    }
-                    .scrolling-wrapper {
-                    display: flex;
-                    overflow-x: auto;
-                    gap: 1rem;
-                    padding-bottom: 1rem;
-                    }
-                    .scrolling-wrapper::-webkit-scrollbar {
-                    display: none;
-                    }
-                    .card-img-top {
-                    height: 180px;
-                    object-fit: cover;
-                    }
-                    .reviewer-img {
-                    width: 40px;
-                    height: 40px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                    }
-                    .star-rating {
-                    color: #ffa500;
-                    font-size: 1rem;
-                    margin: 0.5rem 0;
-                    }
-                </style>
-                  <style>
-                        /* Scroll section styling */
-                        .scrolling-wrapper, .scrolling-articles {
-                        display: flex;
-                        overflow-x: auto;
-                        gap: 1rem;
-                        padding-bottom: 1rem;
-                        scroll-behavior: smooth;
-                        }
-
-                        .scrolling-wrapper::-webkit-scrollbar,
-                        .scrolling-articles::-webkit-scrollbar {
-                        display: none;
-                        }
-
-                        .business-card, .article-card {
-                        flex: 0 0 auto;
-                        width: 300px;
-                        border-radius: 10px;
-                        overflow: hidden;
-                        border: 1px solid #ddd;
-                        background: #fff;
-                        }
-
-                        .card-img-top,
-                        .article-card img {
-                        width: 100%;
-                        height: 180px;
-                        object-fit: cover;
-                        }
-
-                        .reviewer-img {
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        }
-
-                        .star-rating {
-                        color: #ffa500;
-                        font-size: 1rem;
-                        margin: 0.5rem 0;
-                        }
-
-                        .article-body {
-                        padding: 0.75rem;
-                        }
-
-                        .article-title {
-                        font-size: 16px;
-                        font-weight: 500;
-                        margin-bottom: 0.5rem;
-                        }
-
-                        .article-link {
-                        color: #007bff;
-                        text-decoration: none;
-                        font-weight: 500;
-                        }
-
-                        .article-link:hover {
-                        text-decoration: underline;
-                        }
-
-                        .d-grid {
-                        display: flex;
-                        justify-content: center;
-                        margin-top: 1rem;
-                        }
-                    </style>
-
-                    <style>
-                        .card img {
-                            height: 120px;
-                            object-fit: cover;
-                        }
-                        </style>
-
-                        <style>
-                        .card-header {
-                        background-color: #f8f9fa;
-                        font-size: 0.9rem;
-                        }
-                        .card-header strong {
-                        font-size: 1rem;
-                        }
-                        .whatsapp-badge {
-                        display: flex;
-                        align-items: center;
-                        padding: 2px 6px;
-                        font-size: 0.8rem;
-                        border-radius: 20px;
-                        }
-                        .whatsapp-badge img {
-                        width: 16px;
-                        height: 16px;
-                        margin-right: 4px;
-                        }
-                        .card-body p {
-                        font-size: 0.85rem;
-                        }
-                        .text-warning {
-                        letter-spacing: 1px;
-                        }
-                        </style>  
-                        <style>
-                            .v_rotate-90{
-                                transform: rotate(90deg);
-                                transform-origin: left top;
-                                white-space : nowrap;
-
-                            }
-                            .v_adv_free {
-                                right: -115px !important;
-                               
-                               
-                            }
-                           
-                            
-                        </style>  
-                        <style>
-                            .v_hieght{
-                                height: 240px;
-                            }
-                        </style> 
-                 
-           
-                      
-
-                        <style>
-                           .v_bl_m1{
-                                height: 117px;
-                            }
-                            .v_bl_m1 img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            }
-                           .v_bl_m2 {
-                                height: 130px;
-                            }
-                            .v_bl_m3 {
-                                height: 330px;
-                            }
-                        </style>
-
-                        <style>
-                        .custom-navbar {
-                            width: 700px;
-                            height: 233px;
-                            margin: 0 auto; /* center horizontally */
-                        }
-                        </style>
-
-                        <style>
-                            .fixed-img {
-                            width: 350px;
-                            height: 250px;
-                            object-fit: cover; /* image को crop करके box भर देगा */
-                            }
-                        </style>
-
-
-
-                  
-          </head>
-                <body>
-                    <ul class=" v_adv_free  nav flex-column position-fixed top-50 end-0 ">
-                        <li class="nav-item v_rotate-90 mb-5">
-                            <a class="rounded-bottom nav-link active bg-danger text-white" aria-current="page" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item v_rotate-90 mt-5">
-                            <a class="rounded-bottom nav-link bg-primary text-white" href="#">Free Listing</a>
-                        </li>
-                    </ul>                                   
-                    <button onclick="Toprightbottom()" class=" btn btn-dark rounded-5 position-fixed  bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
-                        <i class="fa-solid fa-chevron-up "></i>
-                    </button>
-                        <div class="container-fluid p-4 pt-0 pb-0 v_tbdr  ">
-                          <header class="v_tbdr fixed-top bg-white">
-                                <div class="row m-0 h-100 align-items-center">
-                                    <!-- Left Logo -->
-                                    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center">
-                                    <div class="logo-wrapper">
-                                        <span class="just">Just</span><span class="dial">dial</span>
-                                    </div>
-                                    </div>
-
-                                    <!-- Location + Search -->
-                                    <div class="col-4 p-0 v_tbdr">
-                                    <div
-                                        id="headerInputs"
-                                        class="d-flex justify-content-end align-items-center gap-2"
-                                        style="padding: 10px;"
-                                    >
-                                        <!-- 📍 Location -->
-                                        <div class="input-group" style="width: 180px; height: 35px;">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-map-marker-alt text-primary"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Select Location" />
-                                        </div>
-
-                                        <!-- 🔍 Search -->
-                                        <div class="input-group" style="width: 250px; height: 35px;">
-                                        <span class="input-group-text bg-white border-end-0">
-                                            <i class="fas fa-search text-primary"></i>
-                                        </span>
-                                       
-                                        <input   
-                                            type="text"
-                                            class="form-control border-start-0"
-                                            placeholder="Search for Packers and Movers"/>
-                                           
-                                       
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                    <!-- Right Nav -->
-                                    <div class="col-6 p-0 v_tbdr d-flex align-items-center justify-content-end gap-2">
-                                    <ul class="nav">
-                                        <li class="nav-item">
-                                        <div class="dropdown">
-                                            <button
-                                            class="btn dropdown-toggle text-primary"
-                                            type="button"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                            >
-                                            <i class="fa-solid fa-language"></i> En
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Hindi-H</a></li>
-                                            <li><a class="dropdown-item" href="#">English-E</a></li>
-                                            <li><a class="dropdown-item" href="#">ગુજરાતી-GU</a></li>
-                                            <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
-                                            <li><a class="dropdown-item" href="#">தமிழ்-TM</a></li>
-                                            </ul>
-                                        </div>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link text-black" href="#">Investor Relations</a>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
-                                        </li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary">Login/sign-up</button>
-                                    </div>
-                                </div>
-                            </div>
-                                </header>
-
-                        <br/>
-                        <br/>
-                                                                 
-                                <main class="v_tbdr mt-5  p-0">
-                                <section class="v_bl_m1 v_tbdr ">
-                                    <img src="img/COLOURBOX56682770.png" alt="image">
-                                </section>
-                                <p class="text-secondary mt-3">Mumbai > Restaurants in Mumbai > 150+ Listings</p>
-                                <h4>Best Restaurants in Mumbai - Order Food Online</h4>
-
-
-
-                                <div class="d-flex flex-wrap gap-2 p-3">
-
-                                <!-- Button 1 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn1"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Sort by options">
-                                    Sort By
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn1">
-                                    <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Option 2</a></li>
-                                    </ul>
-                                </div>
-                                
-                                <!-- Button 2 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn2"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Price options">
-                                    Price
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn2">
-                                    <li><a class="dropdown-item" href="#">Low to High</a></li>
-                                    <li><a class="dropdown-item" href="#">High to Low</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 3 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn3"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Cuisines options">
-                                    Cuisines
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn3">
-                                    <li><a class="dropdown-item" href="#">Indian</a></li>
-                                    <li><a class="dropdown-item" href="#">Chinese</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 4 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn4"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Amenities options">
-                                    Amenities
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn4">
-                                    <li><a class="dropdown-item" href="#">Wi-Fi</a></li>
-                                    <li><a class="dropdown-item" href="#">Parking</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 5 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn5"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Ratings options">
-                                    Ratings
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn5">
-                                    <li><a class="dropdown-item" href="#">5 Star</a></li>
-                                    <li><a class="dropdown-item" href="#">4 Star</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 6 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn6"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Book a Table options">
-                                    Book a Table
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn6">
-                                    <li><a class="dropdown-item" href="#">For 2</a></li>
-                                    <li><a class="dropdown-item" href="#">For 4</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 7 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn7"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Online Ordering options">
-                                    Online Ordering
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn7">
-                                    <li><a class="dropdown-item" href="#">Available</a></li>
-                                    <li><a class="dropdown-item" href="#">Not Available</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 8 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn8"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Open Now options">
-                                    Open Now
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn8">
-                                    <li><a class="dropdown-item" href="#">Yes</a></li>
-                                    <li><a class="dropdown-item" href="#">No</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Button 9 -->
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn9"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="top" data-bs-content="Trending options">
-                                    Trending
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="btn9">
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Week</a></li>
-                                    </ul>
-                                </div>
-                                
-
-
-
-
-                                <nav class="navbar bg-body-tertiary custom-navbar">
-                                    <div class="container-fluid d-flex align-items-center gap-4">
-                                        <!-- Left: Image -->
-                                        <img src="img/e3602480a99f7625375b5bdc496879ba_featured_v2.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    <img src="img/image_veer.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    
-
-                                        <!-- Right: Name + Buttons (vertical) -->
-                                        <div class="d-flex flex-column gap-2">
-                                        <!-- Name -->
-                                        <h4 class="m-0">The Bombay Dhaba</h4>
-
-                                        <!-- Buttons -->
-                                        <button class="btn btn-success btn-sm">Show Number</button>
-                                        <button class="btn btn-primary btn-sm">Book a Table</button>
-                                        <button class="btn btn-primary btn-sm">Menu</button>
-                                        </div>
-                                    </div>
-                                    </nav>
-
-                                    <div class="col-4">
-                                        <figure class="figure">
-                                            <img 
-                                            src="img/cooked-curries-on-display-at-camden-market-in-london.png" 
-                                            class="figure-img rounded fixed-img" 
-                                            alt="...">
-                                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                        </figure>
-                                    </div>
-
-                                    <nav class="navbar bg-body-tertiary custom-navbar">
-                                    <div class="container-fluid d-flex align-items-center gap-4">
-                                        <!-- Left: Image -->
-                                        <img src="img/123334-maharaja-bhog-2.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    <img src="img/694da92de55d590cb6eed3bc1cdf8c12.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    
-
-                                        <!-- Right: Name + Buttons (vertical) -->
-                                        <div class="d-flex flex-column gap-2">
-                                        <!-- Name -->
-                                        <h4 class="m-0">Harish Lunch Home</h4>
-
-                                        <!-- Buttons -->
-                                        <button class="btn btn-success btn-sm">Show Number</button>
-                                        <button class="btn btn-primary btn-sm">Book a Table</button>
-                                        <button class="btn btn-primary btn-sm">Menu</button>
-                                        </div>
-                                    </div>
-                                    </nav>
-
-
-                                    <div class="col-4">
-                                        <figure class="figure">
-                                            <img 
-                                            src="img/123334-maharaja-bhog-2.png" 
-                                            class="figure-img rounded fixed-img" 
-                                            alt="...">
-                                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                        </figure>
-                                    </div>
-
-                                <nav class="navbar bg-body-tertiary custom-navbar">
-                                    <div class="container-fluid d-flex align-items-center gap-4">
-                                        <!-- Left: Image -->
-                                        <img src="img/f016dc0c435f3bb756c02774a9f670d7_featured_v2.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    <img src="img/022pxx22.xx22.140125120818.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    
-
-                                        <!-- Right: Name + Buttons (vertical) -->
-                                        <div class="d-flex flex-column gap-2">
-                                        <!-- Name -->
-                                        <h4 class="m-0">Daras Restaurant Bar</h4>
-
-                                        <!-- Buttons -->
-                                        <button class="btn btn-success btn-sm">Show Number</button>
-                                        <button class="btn btn-primary btn-sm">Book a Table</button>
-                                        <button class="btn btn-primary btn-sm">Menu</button>
-                                        </div>
-                                    </div>
-                                    </nav>
-
-                                    <div class="col-4">
-                                        <figure class="figure">
-                                            <img 
-                                            src="img/022pxx22.xx22.131215183545.png" 
-                                            class="figure-img rounded fixed-img" 
-                                            alt="...">
-                                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                        </figure>
-                                    </div>
-
-                                <nav class="navbar bg-body-tertiary custom-navbar">
-                                    <div class="container-fluid d-flex align-items-center gap-4">
-                                        <!-- Left: Image -->
-                                        <img src="img/8de4e63edbfba859d50f996e93afcd6b_1573917008.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    <img src="img/screenshot-20181128-001155.png" 
-                                            alt="Logo" width="200" height="200" class="d-inline-block">
-                                    
-                                    
-
-                                        <!-- Right: Name + Buttons (vertical) -->
-                                        <div class="d-flex flex-column gap-2">
-                                        <!-- Name -->
-                                        <h4 class="m-0">Malvan Tadka</h4>
-
-                                        <!-- Buttons -->
-                                        <button class="btn btn-success btn-sm">Show Number</button>
-                                        <button class="btn btn-primary btn-sm">Book a Table</button>
-                                        <button class="btn btn-primary btn-sm">Menu</button>
-                                        </div>
-                                    </div>
-                                    </nav>
-
-                                    <div class="col-4">
-                                        <figure class="figure">
-                                            <img 
-                                            src="img/8cfc93df940f2aa6222b717c35a8b562.png" 
-                                            class="figure-img rounded fixed-img" 
-                                            alt="...">
-                                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                        </figure>
-                                    </div> 
-                                    </div>                               
-                        
-                            </main>
-                        <footer class="v_tbdr">
-                                <div class="mt-2 d-flex align-items-center">
-                                    <span>Follow us on</span>
-                                    <img src="./img/facebook-social-media-icon-3d_466778-4384.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    <img src="./img/Instagram_logo_2022.png" alt="Insthagam" width="25" height="25" class="ms-2">
-                                    <img src="./img/red-youtube-logo-social-media-logo_197792-1803.png" alt="Insthagam" width="25" height="25" class="ms-2">
-                                    <img src="./img/image_veer_09.png" alt="Insthagam" width="25" height="25" class="ms-2">
-                                </div>
-                                
-                                <h5 class="mt-5">One-Stop for All Local Businesses, Services, & Stores Nearby Across India</h5>
-                                    <p>
-                                        Welcome to Justdial, your 'one stop shop' where you are assisted with day-to-day and exclusive planning and purchasing activities. We take pride in our iconic customer support number, 8888888888 and the fact that we own a strong hold on local business information pan India.
-
-                                        Our service extends from providing address and contact details of business establishments around the country, to making orders and reservations for leisure, medical, financial, travel and domestic purposes. We enlist business information across varied sectors like Hotels, Restaurants, Auto Care, Home Decor, Personal and Pet Care, Fitness, Insurance, Real Estate, Sports, Schools, etc. from all over the country. Holding information right from major cities like Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Ahmedabad and Pune our reach stretches out to other smaller cities across the country too.
-
-                                        Our 'Free Listing' feature gives a platform to showcase varied specialities. We then furnish you with the information via phone, SMS, web, App and WAP as well as, create a space for you to share your experiences through our 'Rate & Review' feature. Through the 'Best Deals', 'Last Minute Deals' and 'Live Quotes', we make sure that you are offered the best bargains in the market.
-                                    </p>
-
-                                    <h5 class="mt-5">Some of our services that will prove useful to you on a day-to-day basis are :</h5>
-                                    
-                                    
-                                        <div class="container text-left mt-3">
-                                        <div class="row">
-                                            <div class="col">
-                                            <img src="./img/image_hllo.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Jobs
-                                            <P>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</P>
-                                            </div>
-                                            <div class="col">
-                                            <img src="./img/2503508.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Movies
-                                            <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
-                                            </div>
-                                            <div class="col">
-                                            <img src="./img/image_kxsk.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Spa & Salon
-                                            <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
-                                            </div>
-                                            <div class="col">
-                                            <img src="./img/9759793.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Repair & Services
-                                            <p>Find the 'Best Deal', be it for repairing your air-conditioner, getting your car serviced or cleaning your water purifier and drive your utility problems away.</p>
-                                            </div>
-                                        </div>
-                                        </div>
-
-                                        <div class="container text-left mt-3">
-                                        <div class="row">
-                                            <div class="col">
-                                            <img src="./img/doctor-this-team-doctors-looking-600nw-2051510273.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Doctor Appointment
-                                            <P>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</P>
-                                            </div>
-                                            <div class="col">
-                                            <img src="./img/estate-agent-black-glyph-icon-real-estate-broker-housing-assistance-and-help-property-sale-and-purchasing-silhouette-symbol-on-white-space-solid-pictogram-isolated-illustration-vector.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Real Estate Agents
-                                            <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
-                                            </div>
-                                            <div class="col">
-                                            <img src="./img/give-money-vector-outline-icon-600nw-1520378267.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                            Online Recharge/Bill Payment
-                                            <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
-                                            </div>
-                                        
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="mt-3">
-                                        <p class="text-body-secondary">Some of the other services that can be of assistance to you for leisure, health and home convenience are - Pest Control, Skin Care Clinics, Painters, Laundry Services, Interior Designers, Mobile Phone Repair, Vaccination Centres, Internet Service Providers, etc. With an endless number of things under the sun, you can be sure this will be your 'One Stop Shop' to find everything and more.</p>
-                                        </div>
-
-                                        <div class="mt-3">
-                                        <p >Popular Categories</p> 
-                                        </div>
-
-                                        <div class="container text-center">
-                                            <div class="row">
-                                                <div class="col">
-                                                Accommodation
-                                                </div>
-                                                <div class="col">
-                                                Astrology
-                                                </div>
-                                                <div class="col">
-                                                Automobiles & Two Wheelers
-                                                </div>
-                                                <div class="col">
-                                                Business & Legal 
-                                                </div>
-                                                <div class="col">
-                                                Education
-                                                </div>
-                                                <div class="col">
-                                                Events & Weddings
-                                                </div>                                   
-                                            </div>
-                                        </div>
-                                    <p>Real Estate Agents | Book Shops | Aadhaar Card Agents | Yoga Classes | Estate Agents For Land |
-                        Pmjay Scheme Hospitals | Tutorials For IIT JEE | Mobile Phone Repair & Services-MI | Wrist Watch
-                        Dealers | Education Consultants | Battery Operated Scooter Dealers-OLA | Entertainment Centres |
-                        DTH
-                        TV Broadcast Service Providers-Sun Direct | AC Repair & Services-Blue Star | Tnpsc Tutorials |
-                        Mobile Phone Simcard Dealers-Jio | MPSC Tutorials | Shoe Dealers-Nike | Tirupati Darshanam
-                        Ticketing
-                        Services | Bitcoin Services | Mobile Phone Repair & Services-Nothing | Cat Tutorials | Lawyers
-                        For
-                        District Court | Ayushman Bharat Yojana Consultants | Lawyers For Supreme Court | Sports Shoe
-                        Dealers | Courier Services For Ahmedabad | Internet Payment Gateway Solution Providers | Taxi
-                        Services For Inter City | BPSC Tutorials | Courier Services For Canada | Demat Account Services
-                        |
-                        Automobile Part Dealers-Ashok Leyland | Prp Hair Transplantation Treatment Doctors | Mutual Fund
-                        Agents-SBI | Courier Services For Dubai | BEST Enquiry | Pickleball Courts | Khatu Shyam Bhajan
-                        Singers | Dairy Product Retailers-Amul | Tutorials For Mppsc | Uber Autorickshaw Attachment
-                        Services
-                        | Football Dealers | Courier Services For Surat | Battery Operated Auto Rickshaw Dealers-Mini
-                        Metro
-                        | Electricity Suppliers-Kseb | Courier Services For Tirupati | Packers And Movers For Hyderabad
-                        |
-                        Newspaper Advertising Agencies-Dainik Bhaskar | Tutorials For MHT CET</p>
-
-                                    <h4>Trending Searches</h4>
-                                    <p> Deals and Offers | Kotak Mahindra Banks | INOX Cinemas | Canara Banks | Ratnakar Banks | PVR Cinemas
-                    | ICICI Banks | HDFC Banks | AU Small Finance Bank | Bank Of Maharashtra | Bank Of India | Axis
-                    Banks | IDFC First Banks | Maharashtra Gramin Banks | Catholic Syrian Banks | Saraswat Co Operative
-                    Banks | Punjab & Sind Banks | State Bank Of India | Union Bank Of India | Punjab National Banks |
-                    Bank Of Baroda | Lifestyle Stores | Behrouz Biryani | Fastrack | The Good Bowl | Sony | Yes Banks |
-                    Croma | Dell Exclusive Stores | Beverly Hills Polo Club | Joyalukkas Jewellery | Kalyan Jewellers |
-                    Flying Machine | Lenovo Exclusive Store | Reliance Digital | Vijay Sales | Duroflex | Anytime
-                    Fitness | Kromakay Salons | Toni&Guy Salons | Bakingo | Barbeque Nation Restaurants | McDonalds |
-                    Sweet Truth Cake Shops | ALDO Stores | Helios | Inglot Stores | LEE Stores | Max Stores | US Polo
-                    Assn | Wrangler | Levi's | Apple Store | IFB Point | LG | Oppo Exclusive Showroom | Federal Banks |
-                    IDBI Banks | Bandhan Banks | DBS Banks | Karur Vysya Banks | Indusind Banks | Central Bank Of India
-                    | Explore JD Collections | Travel & Tourism | Beauty & Fashion | Health & Fitness | Food & Beverage
-                    | Finance | On demand Services | Home & Living | Education & Career | Recreation | Jd Business Guide
-                    | Popular Cities | Bangalore | Mumbai | Chennai | Delhi | Hyderabad | Pune | Ahmedabad | Lucknow |
-                    Patna | Jaipur | Indore | Kochi | Kolkata | Coimbatore | Nagpur | Ludhiana | Agra | Bhubaneshwar |
-                    Bhopal | Guwahati | Surat | Madurai | Visakhapatnam | Sonepat | Vadodara | Meerut |
-                    Thiruvananthapuram | Gurgaon | Kozhikode | Varanasi | Siliguri | Allahabad | Rajkot | Ghaziabad |
-                    Mysore | Noida | Chandigarh | Navi-Mumbai | Vijayawada | Durgapur | Srinagar | Nashik | Panipat |
-                    Jammu | Jodhpur | Udaipur-Rajasthan | Thane | Raipur-Chhattisgarh | Amritsar | Jabalpur</p>
-
-                                        <h4>Deals and Offers</h4>
-                                        <p>Kotak Mahindra Banks
-                                            INOX Cinemas
-                                            Canara Banks
-                                            Ratnakar Banks
-                                            PVR Cinemas
-                                            ICICI Banks
-                                            HDFC Banks
-                                            AU Small Finance Bank
-                                            Bank Of Maharashtra
-                                            Bank Of India
-                                            Axis Banks
-                                            IDFC First Banks
-                                            Maharashtra Gramin Banks
-                                            Catholic Syrian Banks
-                                            Saraswat Co Operative Banks
-                                            Punjab & Sind Banks
-                                            State Bank Of India
-                                            Union Bank Of India
-                                            Punjab National Banks
-                                            Bank Of Baroda
-                                            Lifestyle Stores
-                                            Behrouz Biryani
-                                            Fastrack
-                                            The Good Bowl
-                                            Sony
-                                            Yes Banks
-                                            Croma
-                                            Dell Exclusive Stores
-                                            Beverly Hills Polo Club
-                                            Joyalukkas Jewellery
-                                            Kalyan Jewellers
-                                            Flying Machine
-                                            Lenovo Exclusive Store
-                                            Reliance Digital
-                                            Vijay Sales
-                                            Duroflex
-                                            Anytime Fitness
-                                            Kromakay Salons
-                                            Toni&Guy Salons
-                                            Bakingo
-                                            Barbeque Nation Restaurants
-                                            McDonalds
-                                            Sweet Truth Cake Shops
-                                            ALDO Stores
-                                            Helios
-                                            Inglot Stores
-                                            LEE Stores
-                                            Max Stores
-                                            US Polo Assn
-                                            Wrangler
-                                            Levi's
-                                            Apple Store
-                                            IFB Point
-                                            LG
-                                            Oppo Exclusive Showroom
-                                            Federal Banks
-                                            IDBI Banks
-                                            Bandhan Banks
-                                            DBS Banks
-                                            Karur Vysya Banks
-                                            Indusind Banks
-                                            Central Bank Of India</p>
-
-                                            <h4>Explore JD Collections</h4>
-                                            <p>Travel & Tourism
-                                                Beauty & Fashion
-                                                Health & Fitness
-                                                Food & Beverage
-                                                Finance
-                                                On demand Services
-                                                Home & Living
-                                                Education & Career
-                                                Recreation
-                                                Jd Business Guide</p>
-
-                                                <h4>Popular Cities</h4>
-                                                <p> Bangalore | Mumbai | Chennai | Delhi | Hyderabad | Pune | Ahmedabad | Lucknow | Patna | Jaipur |
-                    Indore |
-                    Kochi | Kolkata | Coimbatore | Nagpur | Ludhiana | Agra | Bhubaneshwar | Bhopal | Guwahati | Surat |
-                    Madurai | Visakhapatnam | Sonepat | Vadodara | Meerut | Thiruvananthapuram | Gurgaon | Kozhikode |
-                    Varanasi | Siliguri | Allahabad | Rajkot | Ghaziabad | Mysore | Noida | Chandigarh | Navi-Mumbai |
-                    Vijayawada | Durgapur | Srinagar | Nashik | Panipat | Jammu | Jodhpur | Udaipur-Rajasthan | Thane |
-                    Raipur-Chhattisgarh | Amritsar | Jabalpur</p>
-
-                                    <div class="row mt-4">
-                    <div class="col-md-3">
-                        <h6 class="fw-bold mb-3">Quick Links</h6>
-                        <ul class="list-unstyled text-start">
-                            <li>About us</li>
-                            <li>Investor Relations</li>
-                            <li>We're hiring</li>
-                            <li>Customer Care</li>
-                            <li>Free Listing</li>
-                            <li>What's New</li>
-                            <li>Report a Bug</li>
-                            <li>B2B Sitemap</li>
-                            <li>Sitemap</li>
-                            <li>Advertise</li>
-                            <li>Media</li>
-                            <li>Testimonials</li>
-                            <li>Feedback</li>
-                            <li>Business Badge</li>
-                            <li>Jd Collection</li>
-                            <li>Client Success Videos</li>
-                            <li>B2B India Sitemap</li>
-                            <li>Return & Exchange Policy</li>
-                        </ul>
+      .v_rotate-90 {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        white-space: nowrap;
+      }
+      .v_adv_free {
+        right: -115px !important;
+      }
+    </style>
+</head>
+<body>
+    <ul class="v_adv_free nav flex-column position-fixed top-50 end-0">
+      <li class="nav-item v_rotate-90 mb-5">
+        <a
+          class="rounded-bottom nav-link active bg-danger text-white"
+          aria-current="page"
+          href="#"
+          >Advertise</a
+        >
+      </li>
+      <li class="nav-item v_rotate-90 mt-5">
+        <a class="rounded-bottom nav-link bg-primary text-white" href="#"
+          >Free Listing</a
+        >
+      </li>
+    </ul>
+    <button onclick="Toprightbottom()" class="btn btn-dark rounded-5 position-fixed bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    <div class="container-fluid p-4 pt-0 pb-0">
+        <header class="fixed-top bg-white">
+            <div class="row m-0 h-100 align-items-center">
+                <!-- Left Logo -->
+                <div class="col-2 p-0 d-flex align-items-center justify-content-center">
+                    <div class="logo-wrapper">
+                        <span class="just">Just</span><span class="dial">dial</span>
                     </div>
-                    <div class="col-md-9">
-                        <h6 class="fw-bold mb-3">JD Verticals</h6>
-                        <div class="row text-start">
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>B2B</li>
-                                    <li>Accommodation</li>
-                                    <li>Automobiles & Two Wheelers</li>
-                                    <li>Education</li>
-                                    <li>Entertainment</li>
-                                    <li>Home & Garden</li>
-                                    <li>Lights & Lighting</li>
-                                    <li>Placements</li>
-                                    <li>Sports & Entertainment</li>
-                                    <li>Watches & Eyewear</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>All India</li>
-                                    <li>Advertising & PR</li>
-                                    <li>Beauty & Personal Care</li>
-                                    <li>Electronic Component</li>
-                                    <li>Events & Wedding</li>
-                                    <li>Housekeeping & Facility Management</li>
-                                    <li>Luggage Bags & Cases</li>
-                                    <li>Public</li>
-                                    <li>Textile & Leather</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>Doctors</li>
-                                    <li>Agriculture</li>
-                                    <li>Business & Legal</li>
-                                    <li>Electronics</li>
-                                    <li>Food & Beverage</li>
-                                    <li>Industrial Plants & Machinery</li>
-                                    <li>Office & School Supplies</li>
-                                    <li>Restaurant</li>
-                                    <li>Toys & Games</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>Bills & Recharge</li>
-                                    <li>Apparel</li>
-                                    <li>Chemicals</li>
-                                    <li>Energy</li>
-                                    <li>Furniture</li>
-                                    <li>IT Components</li>
-                                    <li>Packaging & Printing</li>
-                                    <li>Pet & Pet Supplies</li>
-                                    <li>Security & Protection</li>
-                                    <li>Travel</li>
-                                    <li>Cricket</li>
-                                    <li>Astrology</li>
-                                    <li>Construction & Real Estate</li>
-                                    <li>Engineering</li>
-                                    <li>Health & Medical</li>
-                                    <li>Jewellery</li>
-                                     
-                                </ul>
-                              
-                            </div>
+                </div>
+                <!-- Location + Search -->
+                <div class="col-4 p-0">
+                    <div id="headerInputs" class="d-flex justify-content-end align-items-center gap-2" style="padding: 10px;">
+                        <!-- 📍 Location -->
+                        <div class="input-group" style="width: 180px; height: 35px;">
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Select Location" />
+                        </div>
+                        <!-- 🔍 Search -->
+                        <div class="input-group" style="width: 250px; height: 35px;">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Search for Packers and Movers"/>
                         </div>
                     </div>
                 </div>
-            
-
-         
-        
-                                
-                    <script>
-                                window.onload = function () {
-                                const topTexts = [
-                                    "5.9 Crore + product & services",
-                                    "4.7 Crore + business"
-                                ];
-
-                                let topIndex = 0;
-                                const rotatingText = document.getElementById("rotatingText");
-
-                                setInterval(() => {
-                                    topIndex = (topIndex + 1) % topTexts.length;
-                                    rotatingText.textContent = topTexts[topIndex];
-                                }, 1000);
-
-                                const rotatingWords = [
-                                    "Packers and Movers",
-                                    "Restaurants",
-                                    "Doctors",
-                                    "Electricians",
-                                    "Plumbers"
-                                ];
-
-                                let searchIndex = 0;
-                                const input = document.getElementById("searchInput");
-
-                                setInterval(() => {
-                                    searchIndex = (searchIndex + 1) % rotatingWords.length;
-                                    input.setAttribute("placeholder", "Search for " + rotatingWords[searchIndex]);
-                                }, 1000);
-                                };
-                    </script>
-                    
-                
-            
-                    
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                
-                <script>
-                        window.addEventListener("scroll", () => {
-                            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                            const windowHeight = window.innerHeight;
-                            const docHeight = document.documentElement.scrollHeight;
-
-                            const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
-
-                            const element = document.querySelector('.v_Toprightbottom'); // fixed variable name
-
-                            if (scrollPercent >= 2) { // fixed scroll threshold
-                                console.log("hello");
-                                if (element.classList.contains("d-none")) {
-                                    element.classList.remove("d-none");
-                                    element.classList.add("d-flex");
-                                }
-                            } else {
-                                if (!element.classList.contains("d-none")) {
-                                    element.classList.remove("d-flex");
-                                    element.classList.add("d-none");
-                                }
-                            }
-                        });
-                </script>
-
-
-                <script>
-                    function Toprightbottom(){
-                        document.documentElement.scrollTop = 0;
-                    }
-                </script> 
-                
-
-                <script>
-                // make right equal to left
-                function setRightHeight() {
-                const left = document.querySelector(".col-md-6 .carousel");
-                const right = document.querySelector(".col-md-6.d-flex.flex-column");
-
-                if (left && right) {
-                    right.style.height = left.offsetHeight + "px";
+                <!-- Right Nav -->
+                <div class="col-6 p-0 d-flex align-items-center justify-content-end gap-2">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-language"></i> En
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Hindi-H</a></li>
+                                    <li><a class="dropdown-item" href="#">English-E</a></li>
+                                    <li><a class="dropdown-item" href="#">ગુજરાતી-GU</a></li>
+                                    <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
+                                    <li><a class="dropdown-item" href="#">தமிழ்-TM</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black" href="#">Investor Relations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-primary">Login/sign-up</button>
+                </div>
+            </div>
+        </header>
+        <main class="mt-5 p-0">
+            <section class="v_bl_m1">
+                <img src="img/COLOURBOX56682770.png" alt="image">
+            </section>
+            <p class="text-secondary mt-3">Mumbai > Restaurants in Mumbai > 150+ Listings</p>
+            <h4>Best Restaurants in Mumbai - Order Food Online</h4>
+            <div class="d-flex flex-wrap gap-2 p-3">
+                <!-- Dropdown Buttons -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort By
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn1">
+                        <li><a class="dropdown-item" href="#">Option 1</a></li>
+                        <li><a class="dropdown-item" href="#">Option 2</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn2" data-bs-toggle="dropdown" aria-expanded="false">
+                        Price
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn2">
+                        <li><a class="dropdown-item" href="#">Low to High</a></li>
+                        <li><a class="dropdown-item" href="#">High to Low</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn3" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cuisines
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn3">
+                        <li><a class="dropdown-item" href="#">Indian</a></li>
+                        <li><a class="dropdown-item" href="#">Chinese</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn4" data-bs-toggle="dropdown" aria-expanded="false">
+                        Amenities
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn4">
+                        <li><a class="dropdown-item" href="#">Wi-Fi</a></li>
+                        <li><a class="dropdown-item" href="#">Parking</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn5" data-bs-toggle="dropdown" aria-expanded="false">
+                        Ratings
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn5">
+                        <li><a class="dropdown-item" href="#">5 Star</a></li>
+                        <li><a class="dropdown-item" href="#">4 Star</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn6" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book a Table
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn6">
+                        <li><a class="dropdown-item" href="#">For 2</a></li>
+                        <li><a class="dropdown-item" href="#">For 4</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn7" data-bs-toggle="dropdown" aria-expanded="false">
+                        Online Ordering
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn7">
+                        <li><a class="dropdown-item" href="#">Available</a></li>
+                        <li><a class="dropdown-item" href="#">Not Available</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn8" data-bs-toggle="dropdown" aria-expanded="false">
+                        Open Now
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn8">
+                        <li><a class="dropdown-item" href="#">Yes</a></li>
+                        <li><a class="dropdown-item" href="#">No</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="btn9" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trending
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn9">
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">This Week</a></li>
+                    </ul>
+                </div>
+                <!-- Restaurant Listings -->
+                <nav class="navbar bg-body-tertiary custom-navbar">
+                    <div class="container-fluid d-flex align-items-center gap-4">
+                        <img src="img/e3602480a99f7625375b5bdc496879ba_featured_v2.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <img src="img/image_veer.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="m-0">The Bombay Dhaba</h4>
+                            <button class="btn btn-success btn-sm">Show Number</button>
+                            <button class="btn btn-primary btn-sm">Book a Table</button>
+                            <button class="btn btn-primary btn-sm">Menu</button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-4">
+                    <figure class="figure">
+                        <img src="img/cooked-curries-on-display-at-camden-market-in-london.png" class="figure-img rounded fixed-img" alt="...">
+                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+                <nav class="navbar bg-body-tertiary custom-navbar">
+                    <div class="container-fluid d-flex align-items-center gap-4">
+                        <img src="img/123334-maharaja-bhog-2.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <img src="img/694da92de55d590cb6eed3bc1cdf8c12.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="m-0">Harish Lunch Home</h4>
+                            <button class="btn btn-success btn-sm">Show Number</button>
+                            <button class="btn btn-primary btn-sm">Book a Table</button>
+                            <button class="btn btn-primary btn-sm">Menu</button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-4">
+                    <figure class="figure">
+                        <img src="img/123334-maharaja-bhog-2.png" class="figure-img rounded fixed-img" alt="...">
+                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+                <nav class="navbar bg-body-tertiary custom-navbar">
+                    <div class="container-fluid d-flex align-items-center gap-4">
+                        <img src="img/f016dc0c435f3bb756c02774a9f670d7_featured_v2.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <img src="img/022pxx22.xx22.140125120818.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="m-0">Daras Restaurant Bar</h4>
+                            <button class="btn btn-success btn-sm">Show Number</button>
+                            <button class="btn btn-primary btn-sm">Book a Table</button>
+                            <button class="btn btn-primary btn-sm">Menu</button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-4">
+                    <figure class="figure">
+                        <img src="img/022pxx22.xx22.131215183545.png" class="figure-img rounded fixed-img" alt="...">
+                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+                <nav class="navbar bg-body-tertiary custom-navbar">
+                    <div class="container-fluid d-flex align-items-center gap-4">
+                        <img src="img/8de4e63edbfba859d50f996e93afcd6b_1573917008.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <img src="img/screenshot-20181128-001155.png" alt="Logo" width="200" height="200" class="d-inline-block">
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="m-0">Malvan Tadka</h4>
+                            <button class="btn btn-success btn-sm">Show Number</button>
+                            <button class="btn btn-primary btn-sm">Book a Table</button>
+                            <button class="btn btn-primary btn-sm">Menu</button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-4">
+                    <figure class="figure">
+                        <img src="img/8cfc93df940f2aa6222b717c35a8b562.png" class="figure-img rounded fixed-img" alt="...">
+                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="mt-2 d-flex align-items-center">
+                <span>Follow us on</span>
+                <img src="./img/facebook-social-media-icon-3d_466778-4384.png" alt="Facebook" width="25" height="25" class="ms-2">
+                <img src="./img/Instagram_logo_2022.png" alt="Instagram" width="25" height="25" class="ms-2">
+                <img src="./img/red-youtube-logo-social-media-logo_197792-1803.png" alt="YouTube" width="25" height="25" class="ms-2">
+                <img src="./img/image_veer_09.png" alt="Social Media" width="25" height="25" class="ms-2">
+            </div>
+            <h5 class="mt-5">One-Stop for All Local Businesses, Services, & Stores Nearby Across India</h5>
+            <p>
+                Welcome to Justdial, your 'one stop shop' where you are assisted with day-to-day and exclusive planning and purchasing activities. We take pride in our iconic customer support number, 8888888888 and the fact that we own a strong hold on local business information pan India.
+                <!-- Truncated for brevity; include full text as needed -->
+            </p>
+            <h5 class="mt-5">Some of our services that will prove useful to you on a day-to-day basis are :</h5>
+            <div class="container text-left mt-3">
+                <div class="row">
+                    <div class="col">
+                        <img src="./img/image_hllo.png" alt="Jobs" width="25" height="25" class="ms-2">
+                        Jobs
+                        <p>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./img/2503508.png" alt="Movies" width="25" height="25" class="ms-2">
+                        Movies
+                        <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./img/image_kxsk.png" alt="Spa & Salon" width="25" height="25" class="ms-2">
+                        Spa & Salon
+                        <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./img/9759793.png" alt="Repair & Services" width="25" height="25" class="ms-2">
+                        Repair & Services
+                        <p>Find the 'Best Deal', be it for repairing your air-conditioner, getting your car serviced or cleaning your water purifier and drive your utility problems away.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-left mt-3">
+                <div class="row">
+                    <div class="col">
+                        <img src="./img/doctor-this-team-doctors-looking-600nw-2051510273.png" alt="Doctor Appointment" width="25" height="25" class="ms-2">
+                        Doctor Appointment
+                        <p>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./img/estate-agent-black-glyph-icon-real-estate-broker-housing-assistance-and-help-property-sale-and-purchasing-silhouette-symbol-on-white-space-solid-pictogram-isolated-illustration-vector.png" alt="Real Estate Agents" width="25" height="25" class="ms-2">
+                        Real Estate Agents
+                        <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./img/give-money-vector-outline-icon-600nw-1520378267.png" alt="Online Recharge/Bill Payment" width="25" height="25" class="ms-2">
+                        Online Recharge/Bill Payment
+                        <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p class="text-body-secondary">Some of the other services that can be of assistance to you for leisure, health and home convenience are - Pest Control, Skin Care Clinics, Painters, Laundry Services, Interior Designers, Mobile Phone Repair, Vaccination Centres, Internet Service Providers, etc. With an endless number of things under the sun, you can be sure this will be your 'One Stop Shop' to find everything and more.</p>
+            </div>
+            <div class="mt-3">
+                <p>Popular Categories</p>
+            </div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">Accommodation</div>
+                    <div class="col">Astrology</div>
+                    <div class="col">Automobiles & Two Wheelers</div>
+                    <div class="col">Business & Legal</div>
+                    <div class="col">Education</div>
+                    <div class="col">Events & Weddings</div>
+                </div>
+            </div>
+            <!-- Truncated footer content for brevity; include full content as needed -->
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled text-start">
+                        <li>About us</li>
+                        <li>Investor Relations</li>
+                        <li>We're hiring</li>
+                        <li>Customer Care</li>
+                        <li>Free Listing</li>
+                        <li>What's New</li>
+                        <li>Report a Bug</li>
+                        <li>B2B Sitemap</li>
+                        <li>Sitemap</li>
+                        <li>Advertise</li>
+                        <li>Media</li>
+                        <li>Testimonials</li>
+                        <li>Feedback</li>
+                        <li>Business Badge</li>
+                        <li>Jd Collection</li>
+                        <li>Client Success Videos</li>
+                        <li>India Sitemap</li>
+                        <li>Return & Exchange Policy</li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <h6 class="fw-bold mb-3">JD Verticals</h6>
+                    <div class="row text-start">
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>B2B</li>
+                                <li>Accommodation</li>
+                                <li>Automobiles & Two Wheelers</li>
+                                <li>Education</li>
+                                <li>Entertainment</li>
+                                <li>Home & Garden</li>
+                                <li>Lights & Lighting</li>
+                                <li>Placements</li>
+                                <li>Sports & Entertainment</li>
+                                <li>Watches & Eyewear</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>All India</li>
+                                <li>Advertising & PR</li>
+                                <li>Beauty & Personal Care</li>
+                                <li>Electronic Component</li>
+                                <li>Events & Wedding</li>
+                                <li>Housekeeping & Facility Management</li>
+                                <li>Luggage Bags & Cases</li>
+                                <li>Public</li>
+                                <li>Textile & Leather</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>Doctors</li>
+                                <li>Agriculture</li>
+                                <li>Business & Legal</li>
+                                <li>Electronics</li>
+                                <li>Food & Beverage</li>
+                                <li>Industrial Plants & Machinery</li>
+                                <li>Office & School Supplies</li>
+                                <li>Restaurant</li>
+                                <li>Toys & Games</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>Bills & Recharge</li>
+                                <li>Apparel</li>
+                                <li>Chemicals</li>
+                                <li>Energy</li>
+                                <li>Furniture</li>
+                                <li>IT Components</li>
+                                <li>Packaging & Printing</li>
+                                <li>Pet & Pet Supplies</li>
+                                <li>Security & Protection</li>
+                                <li>Travel</li>
+                                <li>Cricket</li>
+                                <li>Astrology</li>
+                                <li>Construction & Real Estate</li>
+                                <li>Engineering</li>
+                                <li>Health & Medical</li>
+                                <li>Jewellery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.onload = function () {
+            const rotatingWords = [
+                "Packers and Movers",
+                "Restaurants",
+                "Doctors",
+                "Electricians",
+                "Plumbers"
+            ];
+            let searchIndex = 0;
+            const input = document.getElementById("searchInput");
+            setInterval(() => {
+                searchIndex = (searchIndex + 1) % rotatingWords.length;
+                input.setAttribute("placeholder", "Search for " + rotatingWords[searchIndex]);
+            }, 1000);
+        };
+    </script>
+    <script>
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
+            const element = document.querySelector('.v_Toprightbottom');
+            if (scrollPercent >= 2) {
+                if (element.classList.contains("d-none")) {
+                    element.classList.remove("d-none");
+                    element.classList.add("d-flex");
                 }
+            } else {
+                if (!element.classList.contains("d-none")) {
+                    element.classList.remove("d-flex");
+                    element.classList.add("d-none");
                 }
-
-                window.addEventListener("load", setRightHeight);
-                window.addEventListener("resize", setRightHeight);
-
-                </script>
-
-                <script>
-                // Enable all popovers
-                for (let i = 1; i <= 10; i++) {
-                    new bootstrap.Popover(document.getElementById(`btn${i}`));
-                }
-                </script>
-
-
-            </body>
-        </html>
-
-
-
-
-
-
-
-
+            }
+        });
+    </script>
+    <script>
+        function Toprightbottom() {
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

@@ -1,1991 +1,1378 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Find Businesses Near You on Local Search Engine - Justdial</title>
-        <link rel="icon" href="./img/favicon.png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
-            
-             body{
-                background-color: #F1E7E2;
-             }
-             header{
-                height: 80px;
-             }
-             main{
-                min-height: 3500px;
-             }
-             footer{
-                height: 2500px;
-             }
-        </style>
-        <style>
-            .logo-wrapper {
-                    font-family: Arial, sans-serif;
-                    font-weight: bold;
-                    font-size: 28px;
-                    padding: 5px 10px;
-                
-                    
-                }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Businesses Near You on Local Search Engine - Justdial</title>
+    <link rel="icon" href="./img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #F1E7E2;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            height: 80px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        main {
+            margin-top: 100px;
+            min-height: 3500px;
+        }
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+        }
 
-                .just {
-                    color: #0076d6; /* Blue */
-                }
+        /* Logo */
+        .logo-wrapper {
+            font-weight: bold;
+            font-size: 28px;
+            padding: 5px 10px;
+        }
+        .just { color: #0076d6; }
+        .dial { color: #ff6600; }
 
-                .dial {
-                    color: #ff6600; /* Orange */
-                }
-
-        </style>
-        <style>
-                 .location-wrapper {
-                display: inline-block; /* So it doesn't take full width */
-                }
-
-                .location-box {
-                width: 280px; /* Box size */
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                }
-
-                .location-box .form-control {
-                border: none;
-                box-shadow: none;
-                }
-
-                .location-box .input-group-text {
-                background-color: white;
-                border: none;
-                }
-
-        </style>
-        <style>
-                        .location-box,
-            .search-box {
+        /* Input Boxes */
+        .location-box, .search-box {
             width: 280px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             background-color: white;
-            }
-
-            .location-box .form-control,
-            .search-box .form-control {
+        }
+        .location-box .form-control, .search-box .form-control {
             border: none;
             box-shadow: none;
-            }
-
-        </style>
-        <style>
-            .search-box {
-                    width: 280px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-                    background-color: white;
-                    }
-                    .search-box .form-control {
-                    border: none;
-                    box-shadow: none;
-                    }
-
-        </style>
-        <style>
-            #carouselExampleAutoplaying {
-                width: 600px;
-                height: 250px;
-                overflow: hidden;
-                border-radius: 12px;
-                margin-top: 20px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            #carouselExampleAutoplaying .carousel-item,
-            #carouselExampleAutoplaying .carousel-inner,
-            #carouselExampleAutoplaying img {
-                height: 100%;
-                object-fit: cover;
-            }
-         </style>
-         <style>
-           .category-section {
-                    border: 1px solid #ddd;
-                    padding: 15px;
-                    border-radius: 10px;
-                    margin: 20px 0;
-                    background-color: #fff;
-                    }
-
-                    .category-section h5 {
-                    font-weight: bold;
-                    margin-bottom: 15px;
-                    }
-
-                    .card-group {
-                    display: flex;
-                    gap: 20px;
-                    }
-
-                    .card {
-                    width: 150px;
-                    text-align: center;
-                    }
-
-                    .card img {
-                    width: 100%;
-                    height: 100px;
-                    object-fit: cover;
-                    border-radius: 8px;
-                    }
-
-                    .card p {
-                    margin-top: 8px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    }
-
-         </style>
-         <style>
-             .category-box {
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                padding: 20px;
-                background-color: #fdfdfd;
-                margin: 20px 0;
-                }
-
-                .icon-set {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-wrap: wrap;
-                }
-
-                .icon-card {
-                text-align: center;
-                margin: 10px;
-                }
-
-                .icon-card img {
-                width: 50px;
-                height: 50px;
-                object-fit: contain;
-                }
-
-                .icon-label {
-                font-size: 14px;
-                margin-top: 5px;
-                font-weight: 500;
-                }
-
-
-         </style>
-         <style>
-                
-            .custom-card {
-                width: 350px;
-                height: 100px;
-                display: flex;
-                flex-direction: row;
-                overflow: hidden;
-                border-radius: 8px;
-            }
-
-            .custom-card img {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-            }
-
-         
-      </style>
-        <style>
-      
-       
-            .scrolling-wrapper {
-                display: flex;
-                overflow-x: auto;
-                gap: 1rem;
-                padding-bottom: 10px;
-            }
-
-            .scrolling-wrapper::-webkit-scrollbar {
-                display: none; /* hide scrollbar */
-            }
-
-            .scroll-card {
-                flex: 0 0 auto;
-                width: 350px;
-                height: 100px;
-                display: flex;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-                background: white;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            }
-
-            .scroll-card img {
-                width: 100px;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .scroll-card .info {
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .scroll-card .info a {
-                font-size: 14px;
-                color: #007bff;
-                text-decoration: none;
-            }
-
-            .scroll-card .info h6 {
-                font-size: 16px;
-                font-weight: 600;
-                margin: 0;
-            }
-            </style>
-         
-         <style>
-                    .scroll-box {
-                width: 250px;
-                height: 350px;
-                flex: 0 0 auto;
-                background-color: white;
-                margin-right: 16px;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                text-align: center;
-            }
-
-            .scroll-box img {
-                width: 100%;
-                height: 280px;
-                object-fit: cover;
-            }
-            .scroll-box h6 {
-                font-size: 16px;
-                font-weight: 600;
-                margin: 8px 0 4px;
-            }
-            .scroll-box p {
-                font-size: 14px;
-                color: #6c757d;
-                margin: 0;
-            }
-            </style>
-            <style>
-                .card-title {
-                    font-size: 1rem;
-                    font-weight: 600;
-                }
-                .card-text {
-                    font-size: 0.875rem;
-                }
-                .text-warning {
-                    font-size: 1rem;
-                    letter-spacing: 1px;
-                }
-            </style>
-              <style>
-                    .business-card {
-                    min-width: 300px;
-                    max-width: 320px;
-                    border: 1px solid #ddd;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    background: #fff;
-                    flex-shrink: 0;
-                    }
-                    .scrolling-wrapper {
-                    display: flex;
-                    overflow-x: auto;
-                    gap: 1rem;
-                    padding-bottom: 1rem;
-                    }
-                    .scrolling-wrapper::-webkit-scrollbar {
-                    display: none;
-                    }
-                    .card-img-top {
-                    height: 180px;
-                    object-fit: cover;
-                    }
-                    .reviewer-img {
-                    width: 40px;
-                    height: 40px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                    }
-                    .star-rating {
-                    color: #ffa500;
-                    font-size: 1rem;
-                    margin: 0.5rem 0;
-                    }
-                </style>
-                  <style>
-                        /* Scroll section styling */
-                        .scrolling-wrapper, .scrolling-articles {
-                        display: flex;
-                        overflow-x: auto;
-                        gap: 1rem;
-                        padding-bottom: 1rem;
-                        scroll-behavior: smooth;
-                        }
-
-                        .scrolling-wrapper::-webkit-scrollbar,
-                        .scrolling-articles::-webkit-scrollbar {
-                        display: none;
-                        }
-
-                        .business-card, .article-card {
-                        flex: 0 0 auto;
-                        width: 300px;
-                        border-radius: 10px;
-                        overflow: hidden;
-                        border: 1px solid #ddd;
-                        background: #fff;
-                        }
-
-                        .card-img-top,
-                        .article-card img {
-                        width: 100%;
-                        height: 180px;
-                        object-fit: cover;
-                        }
-
-                        .reviewer-img {
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        }
-
-                        .star-rating {
-                        color: #ffa500;
-                        font-size: 1rem;
-                        margin: 0.5rem 0;
-                        }
-
-                        .article-body {
-                        padding: 0.75rem;
-                        }
-
-                        .article-title {
-                        font-size: 16px;
-                        font-weight: 500;
-                        margin-bottom: 0.5rem;
-                        }
-
-                        .article-link {
-                        color: #007bff;
-                        text-decoration: none;
-                        font-weight: 500;
-                        }
-
-                        .article-link:hover {
-                        text-decoration: underline;
-                        }
-
-                        .d-grid {
-                        display: flex;
-                        justify-content: center;
-                        margin-top: 1rem;
-                        }
-                    </style>
-
-                    <style>
-                        .card img {
-                            height: 120px;
-                            object-fit: cover;
-                        }
-                        </style>
-
-                        <style>
-                        .card-header {
-                        background-color: #f8f9fa;
-                        font-size: 0.9rem;
-                        }
-                        .card-header strong {
-                        font-size: 1rem;
-                        }
-                        .whatsapp-badge {
-                        display: flex;
-                        align-items: center;
-                        padding: 2px 6px;
-                        font-size: 0.8rem;
-                        border-radius: 20px;
-                        }
-                        .whatsapp-badge img {
-                        width: 16px;
-                        height: 16px;
-                        margin-right: 4px;
-                        }
-                        .card-body p {
-                        font-size: 0.85rem;
-                        }
-                        .text-warning {
-                        letter-spacing: 1px;
-                        }
-                        </style>  
-                        <style>
-                            .v_rotate-90{
-                                transform: rotate(90deg);
-                                transform-origin: left top;
-                                white-space : nowrap;
-
-                            }
-                            .v_adv_free {
-                                right: -115px !important;
-                               
-                               
-                            }
-                           
-                            
-                        </style>  
-                        <style>
-                            .v_hieght{
-                                height: 240px;
-                            }
-                        </style> 
-                 
-           
-                      <style>           
-                        
-                       .k_slide {
-                        width: 100%;
-                        max-width: 500px;
-                        margin: auto;
-                        }
-
-                        .scroll-container {
-                        display: flex;
-                        gap: 15px;
-                        overflow-x: auto;
-                        padding: 10px 0;
-                        }
-
-                        .category-card {
-                        background: #0076d7;
-                        color: #fff;
-                        min-width: 160px;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                        flex-shrink: 0;
-                        text-align: center;
-                        transition: transform 0.3s ease;
-                        }
-
-                        .category-card img {
-                        width: 100%;
-                        height: auto;
-                        }
-
-                        .category-title {
-                        font-weight: bold;
-                        font-size: 14px;
-                        margin-top: 5px;
-                        }
-
-                        .category-desc {
-                        font-size: 12px;
-                        margin-bottom: 5px;
-                        }
-                        </style> 
-
-                        <style>
-                            #headerInputs,
-                            #pageInputs {
-                            transition: opacity 0.3s ease;
-                            }
-                        </style>
-
-                        <style>
-                            #headerInputs {
-                            visibility: hidden;
-                            }
-
-                        </style>
-
-                        <style>
-                            .card-img-top {
-                            width: 100%;
-                            height: auto;
-                            display: block;
-                            object-fit: cover; /* optional */
-                            }
-                            .card-img-top {
-                            width: 100%;
-                            height: 120px;
-                            object-fit: cover;
-                            }
-
-
-                        </style>
-
-
-
-                  
-          </head>
-                <body>
-
-                    <ul class=" v_adv_free  nav flex-column position-fixed top-50 end-0 ">
-                        <li class="nav-item v_rotate-90 mb-5">
-                            <a class="rounded-bottom nav-link active bg-danger text-white" aria-current="page" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item v_rotate-90 mt-5">
-                            <a class="rounded-bottom nav-link bg-primary text-white" href="#">Free Listing</a>
-                        </li>
-                    </ul>                                   
-                    <button onclick="Toprightbottom()" class=" btn btn-dark rounded-5 position-fixed  bottom-0 end-0 me-2 mb-2 d-none v_Toprightbottom">
-                        <i class="fa-solid fa-chevron-up "></i>
-                    </button>
-                    <div class="container-fluid p-4 pt-0 pb-0 v_tbdr  ">
-                          <header class="v_tbdr fixed-top bg-white">
-                                <div class="row m-0 h-100">
-                                    <!-- Logo -->
-                                    <div class="col-2 p-0 v_tbdr d-flex align-items-center justify-content-center">
-                                    <div class="logo-wrapper">
-                                        <span class="just">Just</span><span class="dial">dial</span>
-                                    </div>
-                                    </div>
-
-                                    <!-- 📍 Location + 🔍 Search -->
-                                  <div class="col-4 p-0 v_tbdr d-flex align-items-center justify-content-center gap-2">
-                                        <div id="headerInputs" class="d-flex gap-2">
-                                            <!-- Location -->
-                                            <div class="input-group location-box" style="width: 180px; height: 40px;">
-                                            <span class="input-group-text">
-                                                <i class="fas fa-map-marker-alt text-primary"></i>
-                                            </span>
-                                            <input type="text" class="form-control" placeholder="Select Location">
-                                            </div>
-
-                                            <!-- Search -->
-                                            <div class="input-group search-box" style="width: 220px; height: 40px;">
-                                            <span class="input-group-text bg-white border-end-0">
-                                                <i class="fas fa-search text-primary"></i>
-                                            </span>
-                                            <input type="text" class="form-control border-start-0" placeholder="Search for Packers and Movers">
-                                            </div>
-                                        </div>
-                                        </div>
-
-                                    
-
-                                    <!-- Right Menu -->
-                                    <div class="col-6 p-0 v_tbdr d-flex align-items-center justify-content-end gap-2">
-                                    <ul class="nav">
-                                        <li class="nav-item">
-                                        <div class="dropdown">
-                                            <button class="btn dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-language "></i> En
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Hindi-H</a></li>
-                                            <li><a class="dropdown-item" href="#">English-E</a></li>
-                                            <li><a class="dropdown-item" href="#">ગુજરાતી-GU</a></li>
-                                            <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
-                                            <li><a class="dropdown-item" href="#">தமிழ்-TM</a></li>
-                                            </ul>
-                                        </div>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link text-black" href="#">Investor Relations</a>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
-                                        </li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary">Login/sign-up</button>
-                                    </div>
-                                </div>
-                                </header>
-
-                            
-                                            
-                    
-                <main class="v_tbdr mt-5  p-0">
-
-                                        <h2>search across '5.9 Crore + 
-                                    <span  id="rotatingText" style="color: #0076D7;">product & services</span>
-                                </h2>
-                                
-                            <div id="pageInputs" class="d-flex gap-3 align-items-center flex-wrap ">
-                
-                            <!-- 📍 Select Location Input -->
-                                    <div class="input-group location-box">
-                                        <span class="input-group-text">
-                                        <i class="fas fa-map-marker-alt text-primary"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Select Location">
-                            </div>
-                                <!-- 🔍 Search For Input with Icon -->
-                                        <div class="input-group search-box">
-                                            <span class="input-group-text bg-white border-end-0">
-                                                <i class="fas fa-search text-primary"></i>
-                                            </span>
-                                                <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search for Packers and Movers">
-                                        </div>
-                                </div>
-                                <button class="btn btn-outline-dark d-flex align-items-center gap-1"
-                                        style="position: fixed; top: 90px; right: 20px; z-index: 1000;">
-                                <img src="img/3554029-200.png" alt="App" style="width: 40px; height: 40px;">
-                                Download App
-                                <i class="bi bi-download"></i>
-                                </button>
-
-                                        
-                            <div class="container my-4">
-                            <div class="row">
-                                <!-- Slider -->
-                                <div class="col-md-6">
-                                <div id="carouselExampleAutoplaying" class="carousel slide k_slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="./img/slide1.jpeg" class="d-block w-100" alt="img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./img/slide2.jpeg" class="d-block w-100" alt="img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./img/slide3.jpeg" class="d-block w-100" alt="img">
-                                    </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                                </div>
-                               
-                         
-                              <div class="card" style="width: 150px; height: 270px; margin-right: 30px;">
-                            <img src="img/b2b.png" class="card-img-top" alt="..." style="width: 100%; height: auto; display: block; object-fit: cover;">
-
-                            <div class="card-body">
-                                <h5 class="card-title">B2B</h5>
-                                <p class="card-text">
-                                Business-to-business (B2B), also called B-to-B, is a form of transaction of activities focused
-                                </p>
-                            </div>
-                            </div> 
-                         <div class="card" style="width: 150px; height: 270px; margin-right: 30px;">
-                            <img src="img/image(29).png" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Repairs & Services</h5>
-                                <p class="card-text">Repairs and services encompass a wide range .</p>
-                                
-                        </div>
-                        </div> 
-
-                        <div class="card" style="width: 150px; height: 270px; margin-right: 30px;">
-                            <img src="img/image(30).png" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Real State</h5>
-                                <p class="card-text"> Real estate refers to land and the permanent structures on.</p>
-                                
-                        </div>
-                        </div> 
-                           
-                        <div class="container text-center my-4">
-                        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
-
-                                <div class="col">
-                                <a href="bussiness-listing.html" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/restaurant-2022.svg?w=96&q=75" alt="Restaurants">
-                                    </div>
-                                    <br>Restaurants
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/hotel-2022.svg?w=96&q=75" alt="Hotels">
-                                    </div>
-                                    <br>Hotels
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/beauty.svg?w=96&q=75" alt="Beauty Spa">
-                                    </div>
-                                    <br>Beauty Spa
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/homedecor.svg?w=96&q=75" alt="Home Decor">
-                                    </div>
-                                    <br>Home Decor
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/education.svg?w=96&q=75" alt="Education">
-                                    </div>
-                                    <br>Education
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color:inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/renthire.svg?w=96&q=75" alt="Rent & Hire">
-                                    </div>
-                                    <br>Rent & Hire
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/hospital_2023.svg?w=96&q=75" alt="Hospitals">
-                                    </div>
-                                    <br>Hospitals
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/contractor-2022.svg?w=96&q=75" alt="Contractors">
-                                    </div>
-                                    <br>Contractors
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/pet_shops_2023.svg?w=96&q=75" alt="Pet Shops">
-                                    </div>
-                                    <br>Pet Shops
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/pg-hostels-rooms.svg?w=96&q=75" alt="PG & Hostels">
-                                    </div>
-                                    <br>PG & Hostels
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/estate-agent.svg?w=96&q=75" alt="Estate Agent">
-                                    </div>
-                                    <br>Estate Agent
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/eventorganizers.svg?w=96&q=75" alt="Event Organizers">
-                                    </div>
-                                    <br>Event Organizers
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/courier_2023.svg?w=96&q=75" alt="Courier Services">
-                                    </div>
-                                    <br>Courier Services
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/newhotkey/loans.svg?w=96&q=75" alt="Loans">
-                                    </div>
-                                    <br>Loans
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/driving_school_2023.svg?w=96&q=75" alt="Driving Schools">
-                                    </div>
-                                    <br>Driving Schools
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/gym_2023.svg?w=96&q=75" alt="Gym">
-                                    </div>
-                                    <br>Gym
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/packers_movers_2023.svg?w=96&q=75" alt="Packers & Movers">
-                                    </div>
-                                    <br>Packers & Movers
-                                </a>
-                                </div>
-
-                                <div class="col">
-                                <a href="#" style="text-decoration: none; color: inherit;">
-                                    <div class="icon-store">
-                                    <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/dentist_2023.svg?w=96&q=75" alt="Dentists">
-                                    </div>
-                                    <br>Dentists
-                                </a>
-                                </div>
-
-                            </div>
-                            </div>
-
-
-
-                                
-                                <div class="category-section">
-                                    <h5>Beauty & Spa</h5>
-                                    <div class="card-group">
-                                        <div class="card">
-                                            <img src="img/pexels-delbeautybox-211032-853427.jpg" alt="Banquet Halls">
-                                        <p>Beauty Parlour</p>
-                                        </div>
-                                        <div class="card">
-                                            <img src="img/photo-1616394584738-fc6e612e71b9.jpeg" alt="Bridal Requisite">
-                                        <p>Spa & Massages</p>
-                                        </div>
-                                        <div class="card">
-                                            <img src="img/istockphoto-1403130812-612x612.jpg" alt="Caterers">
-                                        <p>Salons</p>
-                                        </div>
-                                </div>
-                                </div>
-
-                                <div class="category-section">
-                                    <h5>Repairs & Services</h5>
-                                    <div class="card-group">
-                                        <div class="card">
-                                            <img src="img/hvac-technician-performing-air-conditioner-600nw-2488702851.webp" alt="Banquet Halls">
-                                        <p>AC Services</p>
-                                        </div>
-                                        <div class="card">
-                                            <img src="img/hand-mechanic-holding-car-service-600nw-2340377479(1).webp" alt="Bridal Requisite">
-                                        <p>Car Services</p>
-                                        </div>
-                                        <div class="card">
-                                            <img src="img/images.jpeg" alt="Caterers">
-                                        <p>Bike Services</p>
-                                        </div>
-                                </div>
-                                </div>                            
-                                
-                                <div class="container">
-                                <div class="category-box">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6">
-                                        <h5>Bills & Recharge</h5>
-                                        <p class="text-secondary">Pay your bills & recharge instantly with Justdial</p>
-                                        <p class="text-primary">Explore More</p> 
-                                </div>
-                                
-                                <div class="col-md-6">
-                                        <div class="icon-set">
-                                        <div class="icon-card">
-                                            <img src="./img/photo-1511707171634-5f897ff02aa9.jpeg" alt="Education">
-                                            <div class="icon-label">Mobile</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/pexels-pixabay-207489.jpg" alt="Mobile">
-                                            <div class="icon-label">Electricity</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/360_F_406147347_aJkSB0JxwcLMPLIZErVFi5Q5ZtUSR14r.jpg" alt="Electricity">
-                                            <div class="icon-label">Gas</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/pexels-photo-416528.jpeg" alt="DTH">
-                                            <div class="icon-label">Water</div>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="container">
-                                <div class="category-box">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6">
-                                        <h5>Travel Booking</h5>
-                                        <p class="text-secondary">instant ticket bookings for your best travel experience</p>
-                                        <p class="text-primary">Explore More</p> 
-                                </div>
-                                
-                                <div class="col-md-6">
-                                        <div class="icon-set">
-                                        <div class="icon-card">
-                                            <img src="img/airplane-in-sky-background-illustration-ai-generative-free-photo.jpg" alt="Education">
-                                            <div class="icon-label">Flight</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/banner6.jpg" alt="Mobile">
-                                            <div class="icon-label">Bus</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/images(1).jpeg" alt="Electricity">
-                                            <div class="icon-label">Train</div>
-                                        </div>
-                                        <div class="icon-card">
-                                            <img src="./img/images(2).jpeg" alt="DTH">
-                                            <div class="icon-label">Car rentals</div>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                </div>
-                            </div>    
-                                                                               
-                            <div class="container my-5">
-                                <div class="category-box">                      
-                                    <h4>Trending Searches Near You <span class="badge bg-danger">NEW</span></h4>
-                                    <p class="text-muted">Latest local trends around you</p>
-                                <div class="d-flex overflow-auto gap-3 py-2">
-                                <div class="card" style="min-width: 200px;">
-                                    <img src="img/image(18).png" class="card-img-top" alt="Advertising">
-                                <div class="card-body">
-                                    <h6>Photo studio</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/images(2).jpeg" class="card-img-top" alt="Car Rental">
-                                <div class="card-body">
-                                    <h6>Car Rental For Mumbai</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/hospital-building-outside-composition-vector.png" class="card-img-top" alt="Hospitals">
-                                <div class="card-body">
-                                    <h6>Hospitals</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/law-and-authority-lawyer-concept-judgment-gavel-hammer-in-court-courtroom-for-crime-judgement-legislation-and-judicial-decision-free-photo.png" class="card-img-top" alt="Zudio">
-                                <div class="card-body">
-                                    <h6>lawyer</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.png" class="card-img-top" alt="Restaurants">
-                                <div class="card-body">
-                                    <h6>Restaurants</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                            </div>
-                            </div>
-                            </div>
-                   
-                            <div class="container ">
-                            <h2>Latest Movies & Review</h2>
-
-                            <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <!-- Slide -->
-                                <div class="carousel-item active">
-                                    <div class="row g-3">
-
-                                    <!-- Card 1 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/MV5BMDE1N2EzMjAtMDY1My00YWE5LWEyYjYtYmE3YjZjNzQwNDhmXkEyXkFqcGc@._V1_.png" class="card-img-top img-fluid" alt="Jurassic" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>Jurassic World Rebirth</h6>
-                                            <p class="text-muted">English • 2D</p>
-                                            <span class="badge bg-danger">85%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 2 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/MV5BZjdjODdiMTQtYWIwZi00NTQyLWE0YWItMzk3MTBhOGUyNDY3XkEyXkFqcGc@._V1_QL75_UY281_CR18,0,190,281_.png" class="card-img-top img-fluid" alt="Sitaare" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>Sitaare Zameen Par</h6>
-                                            <p class="text-muted">Hindi • 2D</p>
-                                            <span class="badge bg-danger">74%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 3 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/MV5BNTdhMjA2NWMtNmVkOC00ODdiLTgwNjItNWQ5ZGI1ZTEzODI1XkEyXkFqcGc@._V1_FMjpg_UX1000_.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">English • 2D</p>
-                                            <span class="badge bg-danger">90%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 3 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/maa-et00437726-1750928782.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">Maa • 2D</p>
-                                            <span class="badge bg-danger">90%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                                
-                                
-                                <!-- Next slide (add more if needed) -->
-                                <div class="carousel-item">
-                                    <div class="row g-3">
-                                    <!-- add more 4 cards here -->
-                                        <!-- Card 4 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/et00420723-ntpwjgrfmu-landscape.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">How To Train Your Dragon 3d English Movie • 3D</p>
-                                            <span class="badge bg-danger">80%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 5 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/image(17).png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">Jarann (Marathi Movie) • 2D</p>
-                                            <span class="badge bg-danger">90%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 6 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/hq720.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">Housefull 5b Hindi Movie • 4D</p>
-                                            <span class="badge bg-danger">95%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card 7 -->
-                                    <div class="col-3">
-                                        <div class="card h-100 w-100">
-                                        <img src="img/m3gan20-20250204113419-23458.png" class="card-img-top img-fluid" alt="F1" style="height:300px;object-fit:cover;">
-                                        <div class="card-body">
-                                            <h6>F1</h6>
-                                            <p class="text-muted">M3GAN 2.0 (English Movie) • 3D</p>
-                                            <span class="badge bg-danger">85%</span>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                </div>
-
-                                </div>
-
-                                <!-- Controls -->
-                                <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon"></span>
-                                </button>
-
-                            </div>
-                            </div>     
-                            
-
-                            <section class="container my-5 h-100 ">
-                            <h4 class="fw-bold mb-4">Popular Searches</h4>
-
-                            <div class="d-flex overflow-auto gap-3">
-                                
-                                <div class="card border-0 shadow-sm h-100 " style="min-width: 200px;">
-                                <img src="img/doctor-with-test-tube.png" class="card-img-top" alt="Pathology">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Pathology Labs</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100 " style="min-width: 200px;">
-                                <img src="img/shot-of-a-young-woman-checking-her-results-in-the-dentists-office(1).png" class="card-img-top" alt="Dentists">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Dentists</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100" style="min-width: 200px;">
-                                <img src="img/image(5).png" class="card-img-top" alt="Gynaecologist">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Gynaecologist</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100" style="min-width: 200px;">
-                                <img src="img/image(19).png" class="card-img-top" alt="Playgroups">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Playgroups</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100" style="min-width: 200px;">
-                                <img src="img/image.png" class="card-img-top" alt="Car Rental">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Car Rental</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100" style="min-width: 200px;">
-                                <img src="img/contemporary-designer-pointing-home-interior-260nw-1734082757.png" class="card-img-top" alt="Car Rental">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Interior Designers</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                                <div class="card border-0 shadow-sm h-100" style="min-width: 200px;">
-                                <img src="img/360_F_244750183_NnfrmsAtQL20Z1L56vb5kNxsoOaeyD5C.png" class="card-img-top" alt="Car Rental">
-                                <div class="bg-primary text-white text-center py-3">
-                                    <h6 class="mb-1">Physiotherapist</h6>
-                                    <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
-                                </div>
-                                </div>
-
-                            </div>
-                            </section>
-
-                            <div class="container ">
-                                <div class="category-box">                      
-                                    <h4>Rainy Day Essentials<span class="badge bg-danger">SEASONAL</span></h4>
-                                    <p class="text-muted">Discover wide range of rainy collection</p>
-                                <div class="d-flex overflow-auto gap-3 py-2">
-                                <div class="card" style="min-width: 200px;">
-                                    <img src="img/image(6).png" class="card-img-top" alt="Advertising">
-                                <div class="card-body">
-                                    <h6>Plumber</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/0755px755.x755.170905054501.png" class="card-img-top" alt="Car Rental">
-                                <div class="card-body">
-                                    <h6>Tarpaulin Dealers</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/image(7).png" class="card-img-top" alt="Hospitals">
-                                <div class="card-body">
-                                    <h6>Waterproofing Contractors</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/image(20).png" class="card-img-top" alt="Zudio">
-                                <div class="card-body">
-                                    <h6>Inverter Dealers</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                                <div class="card" style="min-width: 200px;">
-                                <img src="img/a-roadside-tea-stall-in-mumbai-who-makes-amazing-green-tea-made-of-S1YCXM.png" class="card-img-top" alt="Restaurants">
-                                <div class="card-body">
-                                    <h6>Tea Stalls</h6>
-                                    <a href="#" class="text-primary">Explore &gt;</a>
-                                </div>
-                                </div>
-
-                            </div>
-                            </div>
-                            </div>
-                                                            
-                            <h2>Recent Activity</h2>                    
-                                <div class="container my-4">                           
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                                
-                               
-                                <!-- Card -->
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>Samarth Enterprises</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/022pxx22.xx22.130218124317.png" class="card-img-top" alt="...">
-
-                                <div class="card-body d-flex">
-                                    <img src="img/image(23).png"
-                                    alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-
-                                    <div>
-                                    <div class="fw-semibold">raju</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                                </div>
-
-                                <!-- Duplicate the card for others -->
-
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>Sadguru Enterprises</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/image(21).png" class="card-img-top" alt="...">
-
-                                <div class="card-body d-flex">
-                                    <img src="./img/4850.png"
-                                    alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-                                    <div>
-                                    <div class="fw-semibold">hardik</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Dry system is excellent, easy operated, I am satisfied, Thank you.</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                                </div>
-
-                                <!-- More cards... -->
-
-                                <!-- Card 3 -->
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>Indu's Cloths Drying</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/image(22).png" class="card-img-top" alt="...">
-
-                                <div class="card-body d-flex">
-                                    <img src="./img/011pxx11.xx11.090827173528.png" 
-                                    alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-
-                                    <div>
-                                    <div class="fw-semibold">veer</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                                </div>
-
-                                <!-- Card 4 -->
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>Trend Interior</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/1246942380what-are-the-latest-trends-in-interior-design-2024.png" class="card-img-top" alt="...">                                                
-                                <div class="card-body d-flex">
-                                    <img src="./img/360_F_375677469_UzQt3JpGywuXxkOlCkG7SJXXbiGsampv.png" 
-                                    alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-
-                                    <div>
-                                    <div class="fw-semibold">ajay</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                                </div>
-
-                                <!-- Card 5 -->
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>All Season Dry Cloths</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/the-school-is-open-during-the-rainy-season-so-must-dry-the-clothes-in-the-shade-may-cause-damp-odor-free-photo.png" class="card-img-top" alt="...">
-
-                                <div class="card-body d-flex">
-                                    <img src="./img/image(23).png" 
-                                        alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-                                                        
-                                    <div>
-                                    <div class="fw-semibold">shankar kumar</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                                </div>
-
-                                <!-- Card 6 -->
-                                <div class="col">
-                                <div class="card h-100 w-100 shadow-sm">
-
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <strong>Gauri Enterprises</strong>
-                                    <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
-                                    </div>
-                                    <span class="badge bg-light border text-dark whatsapp-badge">
-                                    <img src="img/whatsapp-1623579_1280.png" alt="">
-                                    WhatsApp
-                                    </span>
-                                </div>
-
-                                <img src="./img/011pxx11.xx11.090827173528.png" class="card-img-top" alt="...">
-
-                                <div class="card-body d-flex ">
-                                    <img src="./img/c-letter-logo-design-with-creative-red-cut-vector-29057729.png" 
-                                    alt="User"
-                                    class="rounded-circle me-2"
-                                    style="width: 50px; height: 50px; object-fit: cover;">
-
-                                    <div>
-                                    <div class="fw-semibold">chitransh</div>
-                                    <div class="text-muted small">Wrote a review</div>
-                                    <div class="text-warning small mb-1">★★★★★</div>
-                                    <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
-                                    </div>
-                                </div>
-
-                                </div>
-                             </div>
-                           </div>
-                        </div>
-                             
-
-                        <div class="card my-5" style="width: 16rem; height: 350px;  margin-right: 25px; ">
-                            <img src="img/carnival-mela-banner-on-transparent-background-png.png" class="card-img-top  w-100" alt="...">
-                            <div class="card-body">                               
-                                <h4>The Banarasi Silk Saree Edit: Celeb-Approved Ways to Rock Banarasi Sarees.</h4>
-                                 <a href="#" class="btn btn-primary">Explore ></a>
-                            </div>
-                            </div>
-
-                           
-                        <div class="card my-5" style="width: 16rem; height: 350px;  margin-right: 25px;">
-                            <img src="img/trendy-sports-shoes-on-white-260nw-2547663049(1).png" class="card-img-top  w-100" alt="...">
-                            <div class="card-body">                               
-                                <h4>Fresh Feet Forward: Top Sneaker Cleaning Services in Mumbai.</h4>
-                                 <a href="#" class="btn btn-primary">Explore ></a>
-                            </div>
-                            </div>
-
-                            
-                        <div class="card my-5" style="width: 16rem; height: 350px;  margin-right: 25px;">
-                            <img src="img/sport-collage-action-athletes-various-260nw-2462169765.png" class="card-img-top  w-100" alt="...">
-                            <div class="card-body">                               
-                                <h4>Sports Management Courses in Mumbai: Meets Profession.</h4>
-                                 <a href="#" class="btn btn-primary">Explore ></a>
-                            </div>
-                            </div>
-
-                            
-                        <div class="card my-5" style="width: 16rem; height: 350px;  margin-right: 25px;">
-                            <img src="img/image(31).png" class="card-img-top  w-100" alt="...">
-                            <div class="card-body">                               
-                                <h4>Everything You Need to Know About Subjects in submit Humanities.</h4>
-                                 <a href="#" class="btn btn-primary">Explore ></a>
-                            </div>
-                            </div>
-                
-    </main> 
-                 <footer class="v_tbdr">
-                        <div class="mt-2 d-flex align-items-center">
-                            <span>Follow us on</span>
-                            <img src="./img/facebook-social-media-icon-3d_466778-4384.png" alt="Facebook" width="25" height="25" class="ms-2">
-                            <img src="./img/image(11).png" alt="Insthagam" width="25" height="25" class="ms-2">
-                            <img src="./img/red-youtube-logo-social-media-logo_197792-1803.png" alt="Insthagam" width="25" height="25" class="ms-2">
-                            <img src="./img/image(12).png" alt="Insthagam" width="25" height="25" class="ms-2">
-                        </div>
-                        
-                        <h5 class="mt-5">One-Stop for All Local Businesses, Services, & Stores Nearby Across India</h5>
-                            <p>
-                                Welcome to Justdial, your 'one stop shop' where you are assisted with day-to-day and exclusive planning and purchasing activities. We take pride in our iconic customer support number, 8888888888 and the fact that we own a strong hold on local business information pan India.
-
-                                Our service extends from providing address and contact details of business establishments around the country, to making orders and reservations for leisure, medical, financial, travel and domestic purposes. We enlist business information across varied sectors like Hotels, Restaurants, Auto Care, Home Decor, Personal and Pet Care, Fitness, Insurance, Real Estate, Sports, Schools, etc. from all over the country. Holding information right from major cities like Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Ahmedabad and Pune our reach stretches out to other smaller cities across the country too.
-
-                                Our 'Free Listing' feature gives a platform to showcase varied specialities. We then furnish you with the information via phone, SMS, web, App and WAP as well as, create a space for you to share your experiences through our 'Rate & Review' feature. Through the 'Best Deals', 'Last Minute Deals' and 'Live Quotes', we make sure that you are offered the best bargains in the market.
-                            </p>
-
-                            <h5 class="mt-5">Some of our services that will prove useful to you on a day-to-day basis are :</h5>
-                            
-                            
-                                <div class="container text-left mt-3">
-                                <div class="row">
-                                    <div class="col">
-                                    <img src="./img/image(13).png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Jobs
-                                    <P>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</P>
-                                    </div>
-                                    <div class="col">
-                                    <img src="./img/2503508.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Movies
-                                    <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
-                                    </div>
-                                    <div class="col">
-                                    <img src="./img/image(14).png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Spa & Salon
-                                    <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
-                                    </div>
-                                    <div class="col">
-                                    <img src="./img/9759793.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Repair & Services
-                                    <p>Find the 'Best Deal', be it for repairing your air-conditioner, getting your car serviced or cleaning your water purifier and drive your utility problems away.</p>
-                                    </div>
-                                </div>
-                                </div>
-
-                                <div class="container text-left mt-3">
-                                <div class="row">
-                                    <div class="col">
-                                    <img src="./img/image(15).png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Doctor Appointment
-                                    <P>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</P>
-                                    </div>
-                                    <div class="col">
-                                    <img src="./img/image(4).png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Real Estate Agents
-                                    <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
-                                    </div>
-                                    <div class="col">
-                                    <img src="./img/give-money-vector-outline-icon-600nw-1520378267.png" alt="Facebook" width="25" height="25" class="ms-2">
-                                    Online Recharge/Bill Payment
-                                    <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
-                                    </div>
-                                
-                                </div>
-                                </div>
-                                
-                                <div class="mt-3">
-                                <p class="text-body-secondary">Some of the other services that can be of assistance to you for leisure, health and home convenience are - Pest Control, Skin Care Clinics, Painters, Laundry Services, Interior Designers, Mobile Phone Repair, Vaccination Centres, Internet Service Providers, etc. With an endless number of things under the sun, you can be sure this will be your 'One Stop Shop' to find everything and more.</p>
-                                </div>
-
-                                <div class="mt-3">
-                                <p >Popular Categories</p> 
-                                </div>
-
-                                <div class="container text-center">
-                                    <div class="row">
-                                        <div class="col">
-                                        Accommodation
-                                        </div>
-                                        <div class="col">
-                                        Astrology
-                                        </div>
-                                        <div class="col">
-                                        Automobiles & Two Wheelers
-                                        </div>
-                                        <div class="col">
-                                        Business & Legal 
-                                        </div>
-                                        <div class="col">
-                                        Education
-                                        </div>
-                                        <div class="col">
-                                        Events & Weddings
-                                        </div>
-                                    
-                                    </div>
-                                    </div>
-                                    <p>Real Estate Agents | Book Shops | Aadhaar Card Agents | Yoga Classes | Estate Agents For Land |
-                        Pmjay Scheme Hospitals | Tutorials For IIT JEE | Mobile Phone Repair & Services-MI | Wrist Watch
-                        Dealers | Education Consultants | Battery Operated Scooter Dealers-OLA | Entertainment Centres |
-                        DTH
-                        TV Broadcast Service Providers-Sun Direct | AC Repair & Services-Blue Star | Tnpsc Tutorials |
-                        Mobile Phone Simcard Dealers-Jio | MPSC Tutorials | Shoe Dealers-Nike | Tirupati Darshanam
-                        Ticketing
-                        Services | Bitcoin Services | Mobile Phone Repair & Services-Nothing | Cat Tutorials | Lawyers
-                        For
-                        District Court | Ayushman Bharat Yojana Consultants | Lawyers For Supreme Court | Sports Shoe
-                        Dealers | Courier Services For Ahmedabad | Internet Payment Gateway Solution Providers | Taxi
-                        Services For Inter City | BPSC Tutorials | Courier Services For Canada | Demat Account Services
-                        |
-                        Automobile Part Dealers-Ashok Leyland | Prp Hair Transplantation Treatment Doctors | Mutual Fund
-                        Agents-SBI | Courier Services For Dubai | BEST Enquiry | Pickleball Courts | Khatu Shyam Bhajan
-                        Singers | Dairy Product Retailers-Amul | Tutorials For Mppsc | Uber Autorickshaw Attachment
-                        Services
-                        | Football Dealers | Courier Services For Surat | Battery Operated Auto Rickshaw Dealers-Mini
-                        Metro
-                        | Electricity Suppliers-Kseb | Courier Services For Tirupati | Packers And Movers For Hyderabad
-                        |
-                        Newspaper Advertising Agencies-Dainik Bhaskar | Tutorials For MHT CET</p>
-
-                                    <h4>Trending Searches</h4>
-                                    <p> Deals and Offers | Kotak Mahindra Banks | INOX Cinemas | Canara Banks | Ratnakar Banks | PVR Cinemas
-                    | ICICI Banks | HDFC Banks | AU Small Finance Bank | Bank Of Maharashtra | Bank Of India | Axis
-                    Banks | IDFC First Banks | Maharashtra Gramin Banks | Catholic Syrian Banks | Saraswat Co Operative
-                    Banks | Punjab & Sind Banks | State Bank Of India | Union Bank Of India | Punjab National Banks |
-                    Bank Of Baroda | Lifestyle Stores | Behrouz Biryani | Fastrack | The Good Bowl | Sony | Yes Banks |
-                    Croma | Dell Exclusive Stores | Beverly Hills Polo Club | Joyalukkas Jewellery | Kalyan Jewellers |
-                    Flying Machine | Lenovo Exclusive Store | Reliance Digital | Vijay Sales | Duroflex | Anytime
-                    Fitness | Kromakay Salons | Toni&Guy Salons | Bakingo | Barbeque Nation Restaurants | McDonalds |
-                    Sweet Truth Cake Shops | ALDO Stores | Helios | Inglot Stores | LEE Stores | Max Stores | US Polo
-                    Assn | Wrangler | Levi's | Apple Store | IFB Point | LG | Oppo Exclusive Showroom | Federal Banks |
-                    IDBI Banks | Bandhan Banks | DBS Banks | Karur Vysya Banks | Indusind Banks | Central Bank Of India
-                    | Explore JD Collections | Travel & Tourism | Beauty & Fashion | Health & Fitness | Food & Beverage
-                    | Finance | On demand Services | Home & Living | Education & Career | Recreation | Jd Business Guide
-                    | Popular Cities | Bangalore | Mumbai | Chennai | Delhi | Hyderabad | Pune | Ahmedabad | Lucknow |
-                    Patna | Jaipur | Indore | Kochi | Kolkata | Coimbatore | Nagpur | Ludhiana | Agra | Bhubaneshwar |
-                    Bhopal | Guwahati | Surat | Madurai | Visakhapatnam | Sonepat | Vadodara | Meerut |
-                    Thiruvananthapuram | Gurgaon | Kozhikode | Varanasi | Siliguri | Allahabad | Rajkot | Ghaziabad |
-                    Mysore | Noida | Chandigarh | Navi-Mumbai | Vijayawada | Durgapur | Srinagar | Nashik | Panipat |
-                    Jammu | Jodhpur | Udaipur-Rajasthan | Thane | Raipur-Chhattisgarh | Amritsar | Jabalpur</p>
-
-                                        <h4>Deals and Offers</h4>
-                                        <p>Kotak Mahindra Banks
-                                            INOX Cinemas
-                                            Canara Banks
-                                            Ratnakar Banks
-                                            PVR Cinemas
-                                            ICICI Banks
-                                            HDFC Banks
-                                            AU Small Finance Bank
-                                            Bank Of Maharashtra
-                                            Bank Of India
-                                            Axis Banks
-                                            IDFC First Banks
-                                            Maharashtra Gramin Banks
-                                            Catholic Syrian Banks
-                                            Saraswat Co Operative Banks
-                                            Punjab & Sind Banks
-                                            State Bank Of India
-                                            Union Bank Of India
-                                            Punjab National Banks
-                                            Bank Of Baroda
-                                            Lifestyle Stores
-                                            Behrouz Biryani
-                                            Fastrack
-                                            The Good Bowl
-                                            Sony
-                                            Yes Banks
-                                            Croma
-                                            Dell Exclusive Stores
-                                            Beverly Hills Polo Club
-                                            Joyalukkas Jewellery
-                                            Kalyan Jewellers
-                                            Flying Machine
-                                            Lenovo Exclusive Store
-                                            Reliance Digital
-                                            Vijay Sales
-                                            Duroflex
-                                            Anytime Fitness
-                                            Kromakay Salons
-                                            Toni&Guy Salons
-                                            Bakingo
-                                            Barbeque Nation Restaurants
-                                            McDonalds
-                                            Sweet Truth Cake Shops
-                                            ALDO Stores
-                                            Helios
-                                            Inglot Stores
-                                            LEE Stores
-                                            Max Stores
-                                            US Polo Assn
-                                            Wrangler
-                                            Levi's
-                                            Apple Store
-                                            IFB Point
-                                            LG
-                                            Oppo Exclusive Showroom
-                                            Federal Banks
-                                            IDBI Banks
-                                            Bandhan Banks
-                                            DBS Banks
-                                            Karur Vysya Banks
-                                            Indusind Banks
-                                            Central Bank Of India</p>
-
-                                            <h4>Explore JD Collections</h4>
-                                            <p>Travel & Tourism
-                                                Beauty & Fashion
-                                                Health & Fitness
-                                                Food & Beverage
-                                                Finance
-                                                On demand Services
-                                                Home & Living
-                                                Education & Career
-                                                Recreation
-                                                Jd Business Guide</p>
-
-                                                <h4>Popular Cities</h4>
-                                                <p> Bangalore | Mumbai | Chennai | Delhi | Hyderabad | Pune | Ahmedabad | Lucknow | Patna | Jaipur |
-                    Indore |
-                    Kochi | Kolkata | Coimbatore | Nagpur | Ludhiana | Agra | Bhubaneshwar | Bhopal | Guwahati | Surat |
-                    Madurai | Visakhapatnam | Sonepat | Vadodara | Meerut | Thiruvananthapuram | Gurgaon | Kozhikode |
-                    Varanasi | Siliguri | Allahabad | Rajkot | Ghaziabad | Mysore | Noida | Chandigarh | Navi-Mumbai |
-                    Vijayawada | Durgapur | Srinagar | Nashik | Panipat | Jammu | Jodhpur | Udaipur-Rajasthan | Thane |
-                    Raipur-Chhattisgarh | Amritsar | Jabalpur</p>
-
-                                    <div class="row mt-4">
-                    <div class="col-md-3">
-                        <h6 class="fw-bold mb-3">Quick Links</h6>
-                        <ul class="list-unstyled text-start">
-                            <li>About us</li>
-                            <li>Investor Relations</li>
-                            <li>We're hiring</li>
-                            <li>Customer Care</li>
-                            <li>Free Listing</li>
-                            <li>What's New</li>
-                            <li>Report a Bug</li>
-                            <li>B2B Sitemap</li>
-                            <li>Sitemap</li>
-                            <li>Advertise</li>
-                            <li>Media</li>
-                            <li>Testimonials</li>
-                            <li>Feedback</li>
-                            <li>Business Badge</li>
-                            <li>Jd Collection</li>
-                            <li>Client Success Videos</li>
-                            <li>B2B India Sitemap</li>
-                            <li>Return & Exchange Policy</li>
-                        </ul>
+        }
+        .location-box .input-group-text, .search-box .input-group-text {
+            background-color: white;
+            border: none;
+        }
+
+        /* Carousel */
+        #carouselExampleAutoplaying {
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #carouselExampleAutoplaying .carousel-item,
+        #carouselExampleAutoplaying .carousel-inner,
+        #carouselExampleAutoplaying img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Cards Next to Carousel */
+        .horizontal-cards {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+        .horizontal-cards .card {
+            width: 150px;
+            height: 270px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .horizontal-cards .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .horizontal-cards .card p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Category Section */
+        .category-section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        .category-section h5 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .card-group {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            width: 150px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Category Box */
+        .category-box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fdfdfd;
+            margin: 20px 0;
+        }
+        .icon-set {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .icon-card {
+            text-align: center;
+            margin: 10px;
+        }
+        .icon-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .icon-label {
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Scrollable Cards */
+        .scrolling-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding-bottom: 10px;
+        }
+        .scrolling-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-card {
+            flex: 0 0 auto;
+            width: 350px;
+            height: 100px;
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .scroll-card img {
+            width: 100px;
+            height: 100%;
+            object-fit: cover;
+        }
+        .scroll-card .info {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .scroll-card .info a {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .scroll-card .info h6 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Business Cards */
+        .business-card {
+            min-width: 300px;
+            max-width: 320px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            flex-shrink: 0;
+        }
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        .reviewer-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .star-rating {
+            color: #ffa500;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Movie Carousel */
+        #movieCarousel .carousel-item .card {
+            width: 100%;
+            height: 100%;
+        }
+        #movieCarousel .carousel-item img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Fixed Navigation */
+        .v_adv_free {
+            position: fixed;
+            top: 50%;
+            right: -115px;
+            transform: translateY(-50%);
+        }
+        .v_rotate-90 {
+            transform: rotate(90deg);
+            transform-origin: left top;
+            white-space: nowrap;
+        }
+        .v_Toprightbottom {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* Card Header */
+        .card-header {
+            background-color: #f8f9fa;
+            font-size: 0.9rem;
+        }
+        .card-header strong {
+            font-size: 1rem;
+        }
+        .whatsapp-badge {
+            display: flex;
+            align-items: center;
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+        }
+        .whatsapp-badge img {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+        }
+        .card-body p {
+            font-size: 0.85rem;
+        }
+        .text-warning {
+            letter-spacing: 1px;
+        }
+
+        /* Header Inputs Transition */
+        #headerInputs {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #headerInputs.visible {
+            opacity: 1;
+        }
+        #pageInputs {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Ensure proper container spacing */
+        .container.my-4 {
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <ul class="v_adv_free nav flex-column">
+        <li class="nav-item v_rotate-90 mb-5">
+            <a class="rounded-bottom nav-link active bg-danger text-white" href="#">Advertise</a>
+        </li>
+        <li class="nav-item v_rotate-90 mt-5">
+            <a class="rounded-bottom nav-link bg-primary text-white" href="#">Free Listing</a>
+        </li>
+    </ul>
+
+    <!-- Back to Top Button -->
+    <button onclick="Toprightbottom()" class="btn btn-dark rounded-5 v_Toprightbottom d-none">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <div class="container-fluid p-4 pt-0 pb-0">
+        <header class="fixed-top bg-white">
+            <div class="row m-0 h-100 align-items-center">
+                <!-- Logo -->
+                <div class="col-2 p-0 d-flex align-items-center justify-content-center">
+                    <div class="logo-wrapper">
+                        <span class="just">Just</span><span class="dial">dial</span>
                     </div>
-                    <div class="col-md-9">
-                        <h6 class="fw-bold mb-3">JD Verticals</h6>
-                        <div class="row text-start">
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>B2B</li>
-                                    <li>Accommodation</li>
-                                    <li>Automobiles & Two Wheelers</li>
-                                    <li>Education</li>
-                                    <li>Entertainment</li>
-                                    <li>Home & Garden</li>
-                                    <li>Lights & Lighting</li>
-                                    <li>Placements</li>
-                                    <li>Sports & Entertainment</li>
-                                    <li>Watches & Eyewear</li>
+                </div>
+
+                <!-- Location + Search -->
+                <div class="col-4 p-0 d-flex align-items-center justify-content-center gap-2">
+                    <div id="headerInputs" class="d-flex gap-2">
+                        <div class="input-group location-box" style="width: 180px; height: 40px;">
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Select Location">
+                        </div>
+                        <div class="input-group search-box" style="width: 220px; height: 40px;">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" placeholder="Search for Packers and Movers">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Menu -->
+                <div class="col-6 p-0 d-flex align-items-center justify-content-end gap-2">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-language"></i> En
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Hindi-H</a></li>
+                                    <li><a class="dropdown-item" href="#">English-E</a></li>
+                                    <li><a class="dropdown-item" href="#">ગુજરાતી-GU</a></li>
+                                    <li><a class="dropdown-item" href="#">ಕರ್ನಾಟಕ-KN</a></li>
+                                    <li><a class="dropdown-item" href="#">தமிழ்-TM</a></li>
                                 </ul>
                             </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>All India</li>
-                                    <li>Advertising & PR</li>
-                                    <li>Beauty & Personal Care</li>
-                                    <li>Electronic Component</li>
-                                    <li>Events & Wedding</li>
-                                    <li>Housekeeping & Facility Management</li>
-                                    <li>Luggage Bags & Cases</li>
-                                    <li>Public</li>
-                                    <li>Textile & Leather</li>
-                                </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black" href="#">Investor Relations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black" href="#"><i class="fa-solid fa-chart-simple"></i> Free Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-bell"></i></a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-primary">Login/sign-up</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <h2>search across <span id="rotatingText" style="color: #0076D7;">5.9 Crore + product & services</span></h2>
+            <div id="pageInputs" class="d-flex gap-3 align-items-center flex-wrap">
+                <div class="input-group location-box">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marker-alt text-primary"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Select Location">
+                </div>
+                <div class="input-group search-box">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="fas fa-search text-primary"></i>
+                    </span>
+                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search for Packers and Movers">
+                </div>
+            </div>
+            <button class="btn btn-outline-dark d-flex align-items-center gap-1" style="position: fixed; top: 90px; right: 20px; z-index: 1000;">
+                <img src="img/3554029-200.png" alt="App" style="width: 40px; height: 40px;">
+                Download App
+                <i class="bi bi-download"></i>
+            </button>
+
+            <div class="container my-4">
+                <div class="row align-items-start">
+                    <!-- Carousel -->
+                    <div class="col-md-6">
+                        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="./img/slide1.jpeg" class="d-block w-100" alt="img">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./img/slide2.jpeg" class="d-block w-100" alt="img">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./img/slide3.jpeg" class="d-block w-100" alt="img">
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>Doctors</li>
-                                    <li>Agriculture</li>
-                                    <li>Business & Legal</li>
-                                    <li>Electronics</li>
-                                    <li>Food & Beverage</li>
-                                    <li>Industrial Plants & Machinery</li>
-                                    <li>Office & School Supplies</li>
-                                    <li>Restaurant</li>
-                                    <li>Toys & Games</li>
-                                </ul>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Horizontal Cards -->
+                    <div class="col-md-6">
+                        <div class="horizontal-cards">
+                            <div class="card">
+                                <img src="img/b2b.png" class="card-img-top" alt="B2B">
+                                <div class="card-body">
+                                    <h5 class="card-title">B2B</h5>
+                                    <p class="card-text">Business-to-business (B2B), also called B-to-B, is a form of transaction of activities focused</p>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <ul class="list-unstyled">
-                                    <li>Bills & Recharge</li>
-                                    <li>Apparel</li>
-                                    <li>Chemicals</li>
-                                    <li>Energy</li>
-                                    <li>Furniture</li>
-                                    <li>IT Components</li>
-                                    <li>Packaging & Printing</li>
-                                    <li>Pet & Pet Supplies</li>
-                                    <li>Security & Protection</li>
-                                    <li>Travel</li>
-                                    <li>Cricket</li>
-                                    <li>Astrology</li>
-                                    <li>Construction & Real Estate</li>
-                                    <li>Engineering</li>
-                                    <li>Health & Medical</li>
-                                    <li>Jewellery</li>
-                                     
-                                </ul>
-                              
+                            <div class="card">
+                                <img src="img/image(29).png" class="card-img-top" alt="Repairs & Services">
+                                <div class="card-body">
+                                    <h5 class="card-title">Repairs & Services</h5>
+                                    <p class="card-text">Repairs and services encompass a wide range.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="img/image(30).png" class="card-img-top" alt="Real Estate">
+                                <div class="card-body">
+                                    <h5 class="card-title">Real Estate</h5>
+                                    <p class="card-text">Real estate refers to land and the permanent structures on.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-         
-          </footer>
-                </footer>                                     
-                    <script>
-                                window.onload = function () {
-                                const topTexts = [
-                                    "5.9 Crore + product & services",
-                                    "4.7 Crore + business"
-                                ];
+            <!-- Categories -->
+            <div class="container text-center my-4">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col">
+                        <a href="bussiness-listing.html" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/restaurant-2022.svg?w=96&q=75" alt="Restaurants">
+                            </div>
+                            <br>Restaurants
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/hotel-2022.svg?w=96&q=75" alt="Hotels">
+                            </div>
+                            <br>Hotels
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/beauty.svg?w=96&q=75" alt="Beauty Spa">
+                            </div>
+                            <br>Beauty Spa
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/homedecor.svg?w=96&q=75" alt="Home Decor">
+                            </div>
+                            <br>Home Decor
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/education.svg?w=96&q=75" alt="Education">
+                            </div>
+                            <br>Education
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/renthire.svg?w=96&q=75" alt="Rent & Hire">
+                            </div>
+                            <br>Rent & Hire
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/hospital_2023.svg?w=96&q=75" alt="Hospitals">
+                            </div>
+                            <br>Hospitals
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/contractor-2022.svg?w=96&q=75" alt="Contractors">
+                            </div>
+                            <br>Contractors
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/pet_shops_2023.svg?w=96&q=75" alt="Pet Shops">
+                            </div>
+                            <br>Pet Shops
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/pg-hostels-rooms.svg?w=96&q=75" alt="PG & Hostels">
+                            </div>
+                            <br>PG & Hostels
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/estate-agent.svg?w=96&q=75" alt="Estate Agent">
+                            </div>
+                            <br>Estate Agent
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/eventorganizers.svg?w=96&q=75" alt="Event Organizers">
+                            </div>
+                            <br>Event Organizers
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/courier_2023.svg?w=96&q=75" alt="Courier Services">
+                            </div>
+                            <br>Courier Services
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/loans.svg?w=96&q=75" alt="Loans">
+                            </div>
+                            <br>Loans
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/driving_school_2023.svg?w=96&q=75" alt="Driving Schools">
+                            </div>
+                            <br>Driving Schools
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/gym_2023.svg?w=96&q=75" alt="Gym">
+                            </div>
+                            <br>Gym
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/packers_movers_2023.svg?w=96&q=75" alt="Packers & Movers">
+                            </div>
+                            <br>Packers & Movers
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="icon-store">
+                                <img src="https://akam.cdn.jdmagicbox.com/images/icons/newwap/newhotkey/dentist_2023.svg?w=96&q=75" alt="Dentists">
+                            </div>
+                            <br>Dentists
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                                let topIndex = 0;
-                                const rotatingText = document.getElementById("rotatingText");
+            <!-- Beauty & Spa -->
+            <div class="container">
+                <div class="category-section">
+                    <h5>Beauty & Spa</h5>
+                    <div class="card-group">
+                        <div class="card">
+                            <img src="img/pexels-delbeautybox-211032-853427.jpg" alt="Beauty Parlour">
+                            <p>Beauty Parlour</p>
+                        </div>
+                        <div class="card">
+                            <img src="img/photo-1616394584738-fc6e612e71b9.jpeg" alt="Spa & Massages">
+                            <p>Spa & Massages</p>
+                        </div>
+                        <div class="card">
+                            <img src="img/istockphoto-1403130812-612x612.jpg" alt="Salons">
+                            <p>Salons</p>
+                        </div>
+                    </div>
+                </div>
 
-                                setInterval(() => {
-                                    topIndex = (topIndex + 1) % topTexts.length;
-                                    rotatingText.textContent = topTexts[topIndex];
-                                }, 1000);
+                <!-- Repairs & Services -->
+                <div class="category-section">
+                    <h5>Repairs & Services</h5>
+                    <div class="card-group">
+                        <div class="card">
+                            <img src="img/hvac-technician-performing-air-conditioner-600nw-2488702851.webp" alt="AC Services">
+                            <p>AC Services</p>
+                        </div>
+                        <div class="card">
+                            <img src="img/hand-mechanic-holding-car-service-600nw-2340377479(1).webp" alt="Car Services">
+                            <p>Car Services</p>
+                        </div>
+                        <div class="card">
+                            <img src="img/images.jpeg" alt="Bike Services">
+                            <p>Bike Services</p>
+                        </div>
+                    </div>
+                </div>
 
-                                const rotatingWords = [
-                                    "Packers and Movers",
-                                    "Restaurants",
-                                    "Doctors",
-                                    "Electricians",
-                                    "Plumbers"
-                                ];
+                <!-- Bills & Recharge -->
+                <div class="category-box">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5>Bills & Recharge</h5>
+                            <p class="text-secondary">Pay your bills & recharge instantly with Justdial</p>
+                            <p class="text-primary">Explore More</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="icon-set">
+                                <div class="icon-card">
+                                    <img src="./img/photo-1511707171634-5f897ff02aa9.jpeg" alt="Mobile">
+                                    <div class="icon-label">Mobile</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/pexels-pixabay-207489.jpg" alt="Electricity">
+                                    <div class="icon-label">Electricity</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/360_F_406147347_aJkSB0JxwcLMPLIZErVFi5Q5ZtUSR14r.jpg" alt="Gas">
+                                    <div class="icon-label">Gas</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/pexels-photo-416528.jpeg" alt="Water">
+                                    <div class="icon-label">Water</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                let searchIndex = 0;
-                                const input = document.getElementById("searchInput");
+                <!-- Travel Booking -->
+                <div class="category-box">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5>Travel Booking</h5>
+                            <p class="text-secondary">Instant ticket bookings for your best travel experience</p>
+                            <p class="text-primary">Explore More</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="icon-set">
+                                <div class="icon-card">
+                                    <img src="img/airplane-in-sky-background-illustration-ai-generative-free-photo.jpg" alt="Flight">
+                                    <div class="icon-label">Flight</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/banner6.jpg" alt="Bus">
+                                    <div class="icon-label">Bus</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/images(1).jpeg" alt="Train">
+                                    <div class="icon-label">Train</div>
+                                </div>
+                                <div class="icon-card">
+                                    <img src="./img/images(2).jpeg" alt="Car rentals">
+                                    <div class="icon-label">Car rentals</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                setInterval(() => {
-                                    searchIndex = (searchIndex + 1) % rotatingWords.length;
-                                    input.setAttribute("placeholder", "Search for " + rotatingWords[searchIndex]);
-                                }, 1000);
-                                };
-                    </script>
-                    
-                
-            
-                        
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                    
-                    <script>
-                            window.addEventListener("scroll", () => {
-                                const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                                const windowHeight = window.innerHeight;
-                                const docHeight = document.documentElement.scrollHeight;
+                <!-- Trending Searches -->
+                <div class="category-box">
+                    <h4>Trending Searches Near You <span class="badge bg-danger">NEW</span></h4>
+                    <p class="text-muted">Latest local trends around you</p>
+                    <div class="scrolling-wrapper">
+                        <div class="card" style="min-width: 200px;">
+                            <img src="img/image(18).png" class="card-img-top" alt="Photo studio">
+                            <div class="card-body">
+                                <h6>Photo studio</h6>
+                                <a href="#" class="text-primary">Explore ></a>
+                            </div>
+                        </div>
+                        <div class="card" style="min-width: 200px;">
+                            <img src="img/images(2).jpeg" class="card-img-top" alt="Car Rental">
+                            <div class="card-body">
+                                <h6>Car Rental For Mumbai</h6>
+                                <a href="#" class="text-primary">Explore ></a>
+                            </div>
+                        </div>
+                        <div class="card" style="min-width: 200px;">
+                            <img src="img/hospital-building-outside-composition-vector.png" class="card-img-top" alt="Hospitals">
+                            <div class="card-body">
+                                <h6>Hospitals</h6>
+                                <a href="#" class="text-primary">Explore ></a>
+                            </div>
+                        </div>
+                        <div class="card" style="min-width: 200px;">
+                            <img src="img/law-and-authority-lawyer-concept-judgment-gavel-hammer-in-court-courtroom-for-crime-judgement-legislation-and-judicial-decision-free-photo.png" class="card-img-top" alt="Lawyer">
+                            <div class="card-body">
+                                <h6>Lawyer</h6>
+                                <a href="#" class="text-primary">Explore ></a>
+                            </div>
+                        </div>
+                        <div class="card" style="min-width: 200px;">
+                            <img src="img/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.png" class="card-img-top" alt="Restaurants">
+                            <div class="card-body">
+                                <h6>Restaurants</h6>
+                                <a href="#" class="text-primary">Explore ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
+                <!-- Latest Movies & Review -->
+                <div class="container my-5">
+                    <h2>Latest Movies & Review</h2>
+                    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row g-3">
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/MV5BMDE1N2EzMjAtMDY1My00YWE5LWEyYjYtYmE3YjZjNzQwNDhmXkEyXkFqcGc@._V1_.png" class="card-img-top img-fluid" alt="Jurassic">
+                                            <div class="card-body">
+                                                <h6>Jurassic World Rebirth</h6>
+                                                <p class="text-muted">English • 2D</p>
+                                                <span class="badge bg-danger">85%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/MV5BZjdjODdiMTQtYWIwZi00NTQyLWE0YWItMzk3MTBhOGUyNDY3XkEyXkFqcGc@._V1_QL75_UY281_CR18,0,190,281_.png" class="card-img-top img-fluid" alt="Sitaare">
+                                            <div class="card-body">
+                                                <h6>Sitaare Zameen Par</h6>
+                                                <p class="text-muted">Hindi • 2D</p>
+                                                <span class="badge bg-danger">74%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/MV5BNTdhMjA2NWMtNmVkOC00ODdiLTgwNjItNWQ5ZGI1ZTEzODI1XkEyXkFqcGc@._V1_FMjpg_UX1000_.png" class="card-img-top img-fluid" alt="F1">
+                                            <div class="card-body">
+                                                <h6>F1</h6>
+                                                <p class="text-muted">English • 2D</p>
+                                                <span class="badge bg-danger">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/maa-et00437726-1750928782.png" class="card-img-top img-fluid" alt="Maa">
+                                            <div class="card-body">
+                                                <h6>Maa</h6>
+                                                <p class="text-muted">Maa • 2D</p>
+                                                <span class="badge bg-danger">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row g-3">
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/et00420723-ntpwjgrfmu-landscape.png" class="card-img-top img-fluid" alt="How To Train Your Dragon">
+                                            <div class="card-body">
+                                                <h6>How To Train Your Dragon</h6>
+                                                <p class="text-muted">English • 3D</p>
+                                                <span class="badge bg-danger">80%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/image(17).png" class="card-img-top img-fluid" alt="Jarann">
+                                            <div class="card-body">
+                                                <h6>Jarann</h6>
+                                                <p class="text-muted">Marathi • 2D</p>
+                                                <span class="badge bg-danger">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/hq720.png" class="card-img-top img-fluid" alt="Housefull 5">
+                                            <div class="card-body">
+                                                <h6>Housefull 5</h6>
+                                                <p class="text-muted">Hindi • 4D</p>
+                                                <span class="badge bg-danger">95%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card h-100 w-100">
+                                            <img src="img/m3gan20-20250204113419-23458.png" class="card-img-top img-fluid" alt="M3GAN 2.0">
+                                            <div class="card-body">
+                                                <h6>M3GAN 2.0</h6>
+                                                <p class="text-muted">English • 3D</p>
+                                                <span class="badge bg-danger">85%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
 
-                                const element = document.querySelector('.v_Toprightbottom'); // fixed variable name
+                <!-- Popular Searches -->
+                <section class="container my-5">
+                    <h4 class="fw-bold mb-4">Popular Searches</h4>
+                    <div class="scrolling-wrapper">
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/doctor-with-test-tube.png" class="card-img-top" alt="Pathology">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Pathology Labs</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/shot-of-a-young-woman-checking-her-results-in-the-dentists-office(1).png" class="card-img-top" alt="Dentists">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Dentists</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/image(5).png" class="card-img-top" alt="Gynaecologist">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Gynaecologist</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/image(19).png" class="card-img-top" alt="Playgroups">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Playgroups</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/image.png" class="card-img-top" alt="Car Rental">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Car Rental</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/contemporary-designer-pointing-home-interior-260nw-1734082757.png" class="card-img-top" alt="Interior Designers">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Interior Designers</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm" style="min-width: 200px;">
+                            <img src="img/360_F_244750183_NnfrmsAtQL20Z1L56vb5kNxsoOaeyD5C.png" class="card-img-top" alt="Physiotherapist">
+                            <div class="bg-primary text-white text-center py-3">
+                                <h6 class="mb-1">Physiotherapist</h6>
+                                <a href="#" class="btn btn-light btn-sm fw-bold">Enquire Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                                if (scrollPercent >= 2) { // fixed scroll threshold
-                                    console.log("hello");
-                                    if (element.classList.contains("d-none")) {
-                                        element.classList.remove("d-none");
-                                        element.classList.add("d-flex");
-                                    }
-                                } else {
-                                    if (!element.classList.contains("d-none")) {
-                                        element.classList.remove("d-flex");
-                                        element.classList.add("d-none");
-                                    }
-                                }
-                            });
-                    </script>
+                <!-- Rainy Day Essentials -->
+                <div class="container">
+                    <div class="category-box">
+                        <h4>Rainy Day Essentials <span class="badge bg-danger">SEASONAL</span></h4>
+                        <p class="text-muted">Discover wide range of rainy collection</p>
+                        <div class="scrolling-wrapper">
+                            <div class="card" style="min-width: 200px;">
+                                <img src="img/image(6).png" class="card-img-top" alt="Plumber">
+                                <div class="card-body">
+                                    <h6>Plumber</h6>
+                                    <a href="#" class="text-primary">Explore ></a>
+                                </div>
+                            </div>
+                            <div class="card" style="min-width: 200px;">
+                                <img src="img/0755px755.x755.170905054501.png" class="card-img-top" alt="Tarpaulin Dealers">
+                                <div class="card-body">
+                                    <h6>Tarpaulin Dealers</h6>
+                                    <a href="#" class="text-primary">Explore ></a>
+                                </div>
+                            </div>
+                            <div class="card" style="min-width: 200px;">
+                                <img src="img/image(7).png" class="card-img-top" alt="Waterproofing Contractors">
+                                <div class="card-body">
+                                    <h6>Waterproofing Contractors</h6>
+                                    <a href="#" class="text-primary">Explore ></a>
+                                </div>
+                            </div>
+                            <div class="card" style="min-width: 200px;">
+                                <img src="img/image(20).png" class="card-img-top" alt="Inverter Dealers">
+                                <div class="card-body">
+                                    <h6>Inverter Dealers</h6>
+                                    <a href="#" class="text-primary">Explore ></a>
+                                </div>
+                            </div>
+                            <div class="card" style="min-width: 200px;">
+                                <img src="img/a-roadside-tea-stall-in-mumbai-who-makes-amazing-green-tea-made-of-S1YCXM.png" class="card-img-top" alt="Tea Stalls">
+                                <div class="card-body">
+                                    <h6>Tea Stalls</h6>
+                                    <a href="#" class="text-primary">Explore ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Recent Activity -->
+                <div class="container my-5">
+                    <h2>Recent Activity</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Samarth Enterprises</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/022pxx22.xx22.130218124317.png" class="card-img-top" alt="Samarth Enterprises">
+                                <div class="card-body d-flex">
+                                    <img src="img/image(23).png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">raju</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Sadguru Enterprises</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/image(21).png" class="card-img-top" alt="Sadguru Enterprises">
+                                <div class="card-body d-flex">
+                                    <img src="./img/4850.png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">hardik</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Dry system is excellent, easy operated, I am satisfied, Thank you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Indu's Cloths Drying</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/image(22).png" class="card-img-top" alt="Indu's Cloths Drying">
+                                <div class="card-body d-flex">
+                                    <img src="./img/011pxx11.xx11.090827173528.png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">veer</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Trend Interior</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/1246942380what-are-the-latest-trends-in-interior-design-2024.png" class="card-img-top" alt="Trend Interior">
+                                <div class="card-body d-flex">
+                                    <img src="./img/360_F_375677469_UzQt3JpGywuXxkOlCkG7SJXXbiGsampv.png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">ajay</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>All Season Dry Cloths</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/the-school-is-open-during-the-rainy-season-so-must-dry-the-clothes-in-the-shade-may-cause-damp-odor-free-photo.png" class="card-img-top" alt="All Season Dry Cloths">
+                                <div class="card-body d-flex">
+                                    <img src="./img/image(23).png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">shankar kumar</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 w-100 shadow-sm">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Gauri Enterprises</strong>
+                                        <div class="small text-muted">Ghantali-Thane West – Mumbai</div>
+                                    </div>
+                                    <span class="badge bg-light border text-dark whatsapp-badge">
+                                        <img src="img/whatsapp-1623579_1280.png" alt="">
+                                        WhatsApp
+                                    </span>
+                                </div>
+                                <img src="./img/011pxx11.xx11.090827173528.png" class="card-img-top" alt="Gauri Enterprises">
+                                <div class="card-body d-flex">
+                                    <img src="./img/c-letter-logo-design-with-creative-red-cut-vector-29057729.png" alt="User" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">chitransh</div>
+                                        <div class="text-muted small">Wrote a review</div>
+                                        <div class="text-warning small mb-1">★★★★★</div>
+                                        <p class="mb-0 small">Very nice pully system. Effortlessly anyone can put clothes for drying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <script>
-                            function Toprightbottom(){
-                                document.documentElement.scrollTop = 0;
-                            }
-                    </script> 
-                        
+                <!-- Additional Cards -->
+                <div class="container my-5 d-flex flex-wrap gap-3">
+                    <div class="card" style="width: 16rem; height: 350px;">
+                        <img src="img/carnival-mela-banner-on-transparent-background-png.png" class="card-img-top w-100" alt="Banarasi Silk Saree">
+                        <div class="card-body">
+                            <h4>The Banarasi Silk Saree Edit: Celeb-Approved Ways to Rock Banarasi Sarees.</h4>
+                            <a href="#" class="btn btn-primary">Explore ></a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 16rem; height: 350px;">
+                        <img src="img/trendy-sports-shoes-on-white-260nw-2547663049(1).png" class="card-img-top w-100" alt="Sneaker Cleaning">
+                        <div class="card-body">
+                            <h4>Fresh Feet Forward: Top Sneaker Cleaning Services in Mumbai.</h4>
+                            <a href="#" class="btn btn-primary">Explore ></a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 16rem; height: 350px;">
+                        <img src="img/sport-collage-action-athletes-various-260nw-2462169765.png" class="card-img-top w-100" alt="Sports Management">
+                        <div class="card-body">
+                            <h4>Sports Management Courses in Mumbai: Meets Profession.</h4>
+                            <a href="#" class="btn btn-primary">Explore ></a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 16rem; height: 350px;">
+                        <img src="img/image(31).png" class="card-img-top w-100" alt="Humanities">
+                        <div class="card-body">
+                            <h4>Everything You Need to Know About Subjects in Humanities.</h4>
+                            <a href="#" class="btn btn-primary">Explore ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <script>
-                        // make right equal to left
-                        function setRightHeight() {
-                        const left = document.querySelector(".col-md-6 .carousel");
-                        const right = document.querySelector(".col-md-6.d-flex.flex-column");
+            <footer>
+                <div class="container">
+                    <div class="mt-2 d-flex align-items-center">
+                        <span>Follow us on</span>
+                        <img src="./img/facebook-social-media-icon-3d_466778-4384.png" alt="Facebook" width="25" height="25" class="ms-2">
+                        <img src="./img/image(11).png" alt="Instagram" width="25" height="25" class="ms-2">
+                        <img src="./img/red-youtube-logo-social-media-logo_197792-1803.png" alt="YouTube" width="25" height="25" class="ms-2">
+                        <img src="./img/image(12).png" alt="Twitter" width="25" height="25" class="ms-2">
+                    </div>
+                    <h5 class="mt-5">One-Stop for All Local Businesses, Services, & Stores Nearby Across India</h5>
+                    <p>Welcome to Justdial, your 'one stop shop' where you are assisted with day-to-day and exclusive planning and purchasing activities. We take pride in our iconic customer support number, 8888888888 and the fact that we own a strong hold on local business information pan India...</p>
+                    <h5 class="mt-5">Some of our services that will prove useful to you on a day-to-day basis are :</h5>
+                    <div class="row text-left mt-3">
+                        <div class="col-md-3">
+                            <img src="./img/image(13).png" alt="Jobs" width="25" height="25" class="ms-2">
+                            <strong>Jobs</strong>
+                            <p>Providing pertinent jobs to job seekers and relevant profiles to employers, this service will help you reach out to employers and vice-versa across industry verticals, experience levels and geographies.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="./img/2503508.png" alt="Movies" width="25" height="25" class="ms-2">
+                            <strong>Movies</strong>
+                            <p>This gives you access to book tickets and keep updated with the latest movies. With the provision of a synopsis, cast, crew and trailer, you can make a better choice in the movie you would like to watch.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="./img/9759793.png" alt="Spa & Salon" width="25" height="25" class="ms-2">
+                            <strong>Spa & Salon</strong>
+                            <p>Skip the wait to get pampered at a spa or a salon. In a few clicks, 'Book an Appointment' online through Justdial before your next visit.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="./img/9759793.png" alt="Repair & Services" width="25" height="25" class="ms-2">
+                            <strong>Repair & Services</strong>
+                            <p>Find the 'Best Deal', be it for repairing your air-conditioner, getting your car serviced or cleaning your water purifier and drive your utility problems away.</p>
+                        </div>
+                    </div>
+                    <div class="row text-left mt-3">
+                        <div class="col-md-3">
+                            <img src="./img/image(15).png" alt="Doctor Appointment" width="25" height="25" class="ms-2">
+                            <strong>Doctor Appointment</strong>
+                            <p>Book appointments with top doctors in your city with ease.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="./img/image(4).png" alt="Real Estate Agents" width="25" height="25" class="ms-2">
+                            <strong>Real Estate Agents</strong>
+                            <p>Find trusted real estate agents for buying, selling, or renting properties.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="./img/give-money-vector-outline-icon-600nw-1520378267.png" alt="Online Recharge" width="25" height="25" class="ms-2">
+                            <strong>Online Recharge/Bill Payment</strong>
+                            <p>Recharge your mobile or pay bills instantly through Justdial.</p>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-body-secondary">Some of the other services that can be of assistance to you for leisure, health and home convenience are - Pest Control, Skin Care Clinics, Painters, Laundry Services, Interior Designers, Mobile Phone Repair, Vaccination Centres, Internet Service Providers, etc.</p>
+                    </div>
+                    <h4>Popular Categories</h4>
+                    <div class="row text-center">
+                        <div class="col-md-2">Accommodation</div>
+                        <div class="col-md-2">Astrology</div>
+                        <div class="col-md-2">Automobiles & Two Wheelers</div>
+                        <div class="col-md-2">Business & Legal</div>
+                        <div class="col-md-2">Education</div>
+                        <div class="col-md-2">Events & Weddings</div>
+                    </div>
+                    <p>Real Estate Agents | Book Shops | Aadhaar Card Agents | Yoga Classes | Estate Agents For Land | Pmjay Scheme Hospitals | Tutorials For IIT JEE | Mobile Phone Repair & Services-MI | Wrist Watch Dealers | Education Consultants | Battery Operated Scooter Dealers-OLA | Entertainment Centres | DTH TV Broadcast Service Providers-Sun Direct | AC Repair & Services-Blue Star | Tnpsc Tutorials | Mobile Phone Simcard Dealers-Jio | MPSC Tutorials | Shoe Dealers-Nike | Tirupati Darshanam Ticketing Services | Bitcoin Services | Mobile Phone Repair & Services-Nothing | Cat Tutorials | Lawyers For District Court | Ayushman Bharat Yojana Consultants | Lawyers For Supreme Court | Sports Shoe Dealers | Courier Services For Ahmedabad | Internet Payment Gateway Solution Providers | Taxi Services For Inter City | BPSC Tutorials | Courier Services For Canada | Demat Account Services | Automobile Part Dealers-Ashok Leyland | Prp Hair Transplantation Treatment Doctors | Mutual Fund Agents-SBI | Courier Services For Dubai | BEST Enquiry | Pickleball Courts | Khatu Shyam Bhajan Singers | Dairy Product Retailers-Amul | Tutorials For Mppsc | Uber Autorickshaw Attachment Services | Football Dealers | Courier Services For Surat | Battery Operated Auto Rickshaw Dealers-Mini Metro | Electricity Suppliers-Kseb | Courier Services For Tirupati | Packers And Movers For Hyderabad | Newspaper Advertising Agencies-Dainik Bhaskar | Tutorials For MHT CET</p>
+                    <h4>Trending Searches</h4>
+                    <p>Deals and Offers | Kotak Mahindra Banks | INOX Cinemas | Canara Banks | Ratnakar Banks | PVR Cinemas | ICICI Banks | HDFC Banks | AU Small Finance Bank | Bank Of Maharashtra | Bank Of India | Axis Banks | IDFC First Banks | Maharashtra Gramin Banks | Catholic Syrian Banks | Saraswat Co Operative Banks | Punjab & Sind Banks | State Bank Of India | Union Bank Of India | Punjab National Banks | Bank Of Baroda | Lifestyle Stores | Behrouz Biryani | Fastrack | The Good Bowl | Sony | Yes Banks | Croma | Dell Exclusive Stores | Beverly Hills Polo Club | Joyalukkas Jewellery | Kalyan Jewellers | Flying Machine | Lenovo Exclusive Store | Reliance Digital | Vijay Sales | Duroflex | Anytime Fitness | Kromakay Salons | Toni&Guy Salons | Bakingo | Barbeque Nation Restaurants | McDonalds | Sweet Truth Cake Shops | ALDO Stores | Helios | Inglot Stores | LEE Stores | Max Stores | US Polo Assn | Wrangler | Levi's | Apple Store | IFB Point | LG | Oppo Exclusive Showroom | Federal Banks | IDBI Banks | Bandhan Banks | DBS Banks | Karur Vysya Banks | Indusind Banks | Central Bank Of India</p>
+                    <h4>Explore JD Collections</h4>
+                    <p>Travel & Tourism | Beauty & Fashion | Health & Fitness | Food & Beverage | Finance | On demand Services | Home & Living | Education & Career | Recreation | Jd Business Guide</p>
+                    <h4>Popular Cities</h4>
+                    <p>Bangalore | Mumbai | Chennai | Delhi | Hyderabad | Pune | Ahmedabad | Lucknow | Patna | Jaipur | Indore | Kochi | Kolkata | Coimbatore | Nagpur | Ludhiana | Agra | Bhubaneshwar | Bhopal | Guwahati | Surat | Madurai | Visakhapatnam | Sonepat | Vadodara | Meerut | Thiruvananthapuram | Gurgaon | Kozhikode | Varanasi | Siliguri | Allahabad | Rajkot | Ghaziabad | Mysore | Noida | Chandigarh | Navi-Mumbai | Vijayawada | Durgapur | Srinagar | Nashik | Panipat | Jammu | Jodhpur | Udaipur-Rajasthan | Thane | Raipur-Chhattisgarh | Amritsar | Jabalpur</p>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <h6 class="fw-bold mb-3">Quick Links</h6>
+                            <ul class="list-unstyled text-start">
+                                <li>About us</li>
+                                <li>Investor Relations</li>
+                                <li>We're hiring</li>
+                                <li>Customer Care</li>
+                                <li>Free Listing</li>
+                                <li>What's New</li>
+                                <li>Report a Bug</li>
+                                <li>B2B Sitemap</li>
+                                <li>Sitemap</li>
+                                <li>Advertise</li>
+                                <li>Media</li>
+                                <li>Testimonials</li>
+                                <li>Feedback</li>
+                                <li>Business Badge</li>
+                                <li>Jd Collection</li>
+                                <li>Client Success Videos</li>
+                                <li>B2B India Sitemap</li>
+                                <li>Return & Exchange Policy</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="fw-bold mb-3">JD Verticals</h6>
+                            <div class="row text-start">
+                                <div class="col-md-3">
+                                    <ul class="list-unstyled">
+                                        <li>B2B</li>
+                                        <li>Accommodation</li>
+                                        <li>Automobiles & Two Wheelers</li>
+                                        <li>Education</li>
+                                        <li>Entertainment</li>
+                                        <li>Home & Garden</li>
+                                        <li>Lights & Lighting</li>
+                                        <li>Placements</li>
+                                        <li>Sports & Entertainment</li>
+                                        <li>Watches & Eyewear</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <ul class="list-unstyled">
+                                        <li>All India</li>
+                                        <li>Advertising & PR</li>
+                                        <li>Beauty & Personal Care</li>
+                                        <li>Electronic Component</li>
+                                        <li>Events & Wedding</li>
+                                        <li>Housekeeping & Facility Management</li>
+                                        <li>Luggage Bags & Cases</li>
+                                        <li>Public</li>
+                                        <li>Textile & Leather</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <ul class="list-unstyled">
+                                        <li>Doctors</li>
+                                        <li>Agriculture</li>
+                                        <li>Business & Legal</li>
+                                        <li>Electronics</li>
+                                        <li>Food & Beverage</li>
+                                        <li>Industrial Plants & Machinery</li>
+                                        <li>Office & School Supplies</li>
+                                        <li>Restaurant</li>
+                                        <li>Toys & Games</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <ul class="list-unstyled">
+                                        <li>Bills & Recharge</li>
+                                        <li>Apparel</li>
+                                        <li>Chemicals</li>
+                                        <li>Energy</li>
+                                        <li>Furniture</li>
+                                        <li>IT Components</li>
+                                        <li>Packaging & Printing</li>
+                                        <li>Pet & Pet Supplies</li>
+                                        <li>Security & Protection</li>
+                                        <li>Travel</li>
+                                        <li>Cricket</li>
+                                        <li>Astrology</li>
+                                        <li>Construction & Real Estate</li>
+                                        <li>Engineering</li>
+                                        <li>Health & Medical</li>
+                                        <li>Jewellery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
 
-                        if (left && right) {
-                            right.style.height = left.offsetHeight + "px";
-                        }
-                        }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // Rotating Text
+        window.onload = function () {
+            const topTexts = [
+                "5.9 Crore + product & services",
+                "4.7 Crore + business"
+            ];
+            let topIndex = 0;
+            const rotatingText = document.getElementById("rotatingText");
 
-                        window.addEventListener("load", setRightHeight);
-                        window.addEventListener("resize", setRightHeight);
+            setInterval(() => {
+                topIndex = (topIndex + 1) % topTexts.length;
+                rotatingText.textContent = topTexts[topIndex];
+            }, 1000);
 
-                    </script>
+            const rotatingWords = [
+                "Packers and Movers",
+                "Restaurants",
+                "Doctors",
+                "Electricians",
+                "Plumbers"
+            ];
+            let searchIndex = 0;
+            const input = document.getElementById("searchInput");
 
-                    <script>
-                        window.addEventListener("scroll", () => {
-                        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            setInterval(() => {
+                searchIndex = (searchIndex + 1) % rotatingWords.length;
+                input.setAttribute("placeholder", "Search for " + rotatingWords[searchIndex]);
+            }, 1000);
+        };
 
-                        const headerInputs = document.getElementById("headerInputs");
-                        const pageInputs = document.getElementById("pageInputs");
+        // Scroll Behavior for Inputs
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const headerInputs = document.getElementById("headerInputs");
+            const pageInputs = document.getElementById("pageInputs");
 
-                        if (scrollTop > 50) {
-                            // Scroll hone par → header boxes दिखें, page wale छुपें
-                            headerInputs.classList.remove("d-none");
-                            pageInputs.classList.add("d-none");
-                        } else {
-                            // Scroll top par → page boxes दिखें, header wale छुपें
-                            headerInputs.classList.add("d-none");
-                            pageInputs.classList.remove("d-none");
-                        }
-                        });
-                    </script>
-     
+            if (scrollTop > 50) {
+                headerInputs.classList.add("visible");
+                pageInputs.style.opacity = "0";
+                pageInputs.style.display = "none";
+            } else {
+                headerInputs.classList.remove("visible");
+                pageInputs.style.opacity = "1";
+                pageInputs.style.display = "flex";
+            }
+        });
 
-                    <script>
-                            window.addEventListener("scroll", () => {
-                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        // Back to Top
+        function Toprightbottom() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
 
-                    const headerInputs = document.getElementById("headerInputs");
-                    const pageInputs = document.getElementById("pageInputs");
+        // Show/Hide Back to Top Button
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollPercent = (scrollTop / (docHeight - windowHeight)) * 100;
+            const element = document.querySelector(".v_Toprightbottom");
 
-                    if (scrollTop > 50) {
-                        // scroll hone par
-                        headerInputs.style.visibility = "visible";
-                        pageInputs.classList.add("d-none");
-                    } else {
-                        // scroll top par
-                        headerInputs.style.visibility = "hidden";
-                        pageInputs.classList.remove("d-none");
-                    }
-                    });
-
-                    </script>
-
-            </body>
-        </html>
-
-
-
-
-
-
-
-
+            if (scrollPercent >= 2) {
+                element.classList.remove("d-none");
+                element.classList.add("d-flex");
+            } else {
+                element.classList.remove("d-flex");
+                element.classList.add("d-none");
+            }
+        });
+    </script>
+</body>
+</html>
